@@ -15,15 +15,10 @@ void Menu::show()
 {
     int choice;
     cout << "\n\t* QuickRafter *\n" << endl;
-//    cout << "Choose option: \n\n"
-   cout  << "1. Gable roof without purlins\n"
-//         << "\t(dach dwuspadowy bez platwi)\n\n"
+    cout  << "1. Gable roof without purlins\n"
          << "2. Gable roof with purlins\n"
-//         << "\t(dach dwuspadowy z platwiami)\n\n"
          << "3. Hipped roof without purlins\n"
-//         << "\t(dach kopertowy bez platwi)\n\n"
          << "4. Hipped roof with purlins\n" 
-//         << "\t(dach kopertowy z platwiami)\n" 
          << endl;
 
     choice = validateNumber<int>("Choose option 1-4: ", 1, 4);

@@ -3,6 +3,7 @@
 
 #include "Purlin.h"
 
+// krokiew zwykła
 class CommonRafter : public Element
 {
 protected:
@@ -17,7 +18,7 @@ protected:
     angleHorizontalLine, // pozioma kreska na krokwi pod kątem
     horizontalEaveLength, // odległość okapu od murłaty w poziomie
 
-    /* wymiary krokwi  !!->W OSI KROKWI - SZCZEGÓLNE ZNACZENIE DLA KROKWI NAROŻNEJ
+    /* wymiary krokwi  !!-> W OSI KROKWI - SZCZEGÓLNE ZNACZENIE DLA KROKWI NAROŻNEJ
     wymiary pod odpowiednim kątem, mierzone na górnej powierzchni  */
     eaveToWallPlate,  // od okapu do murłaty
         wallPlateToPurlin, // od murłaty do płatwi (jeśli jest płatew)
@@ -29,7 +30,6 @@ protected:
     additionToEgdes, // dodatek zależny od szeokości krkwi narożnej
     rafterTotalOnEdges; // długośc krokwi z dodatkiem
 
-    // initial cutting ratio
     // wstępny współczynnik długości zacięcia - po obliczeniach nieznacznie się zmieni
     const double cuttingRatio = 0.25; 
 
@@ -67,8 +67,7 @@ public:
     ElementType type() const override { return ElementType::HipRafter; }
 
 private:
-    // dimensions in '3D' show clearly in the picture
-    //
+    
     double verticalCutToSquare, // długość pionoewgo zacięcia w osi krokwi - na naroże
            horizontalCutToSquare,// długość poziomego zacięcia w osi krokwi - na naroże
            angleCutToSquare; // wymiar pod kątem 45 stopni od zewnętrznej powierzchni krokwi do 
@@ -87,24 +86,4 @@ public:
     void showHipParameters();
 };
 
-
-
-
-/****************   VALLEY RAFTER ************************/
-
-// krokiew koszowa
-/*
-
-class ValleyRafter : public HipRafter // krokiew narożna
-{
-public:
-    ValleyRafter() { name = "Valley rafter"; }
-    ElementType type() const override { return ElementType::ValleyRafter; }
-    void setParameters() override {}
-    void calculateParameters() override {}
-};
-
-
-*/
-
-#endif // COMMONRAFTER_H
+#endif

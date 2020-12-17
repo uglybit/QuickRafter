@@ -35,10 +35,9 @@ int OvDim::numberOfRafters;
 bool OvDim::purlin = false;
 
 
-
-OverallDimensions::OverallDimensions()
+OverallDimensions::OverallDimensions() // konstruktor - wywo³ywany w Menu::show(), przed typem dachu
 {
- #ifndef TEST // TEST
+ #ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
 
     cout << "\n\t! >ALL VALUES IN MILIMETERS< !\n" << endl;
 
@@ -65,7 +64,8 @@ OverallDimensions::OverallDimensions()
     getValue = getBuildingWidth(); // ?
     setValue = validateNumber<double>("Enter horizontal eave length: ", 0.0, 3000.0);
     setHorizontalEaveLength(setValue);
-#else // TEST - bez rêcznego wpisywania wartoœci
+
+#else // TEST - bez rêcznego wpisywania wartoœci przez u¿ytkownika
     setBuildingLength(10000);
     setBuildingWidth(8000);
     setTrussHeight(3500);

@@ -47,10 +47,6 @@ class HippedRoof : public GableRoof
 
      HippedRoof();
      HippedRoof(bool purl);
-
-    /*
-    void calculateJackRafters();
-    */
 };
 
 #endif // TRUSS_H

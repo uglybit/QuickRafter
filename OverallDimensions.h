@@ -5,15 +5,11 @@
 #include <iostream>
 #include <iomanip>
 
-/* do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartoœci
- zostan¹ u¿yte wartoœci domyœlne */
-//#define TEST 
+//#define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartoœci
+                // zostan¹ u¿yte wartoœci domyœlne */
 
-
-void requireEnter();
 bool dataValidation(std::string info);
 std::ostream& manip(std::ostream&);
-
 
 
 // walidacja danych wejœciowych - liczba
@@ -26,9 +22,9 @@ T validateNumber(std::string request, T range_low, T range_high,
     {
         std::cout << std::endl << request << std::endl;
         std::cin >> n;
-        if (dataValidation(info_bad_data))// wrong data
+        if (dataValidation(info_bad_data))// z³e dane 
             continue; 
-        else if (n < range_low || n > range_high) // if the chosen number is on range
+        else if (n < range_low || n > range_high) // jeœli poza zakresem 
         {
             std::cout << "You can choose from: " << range_low << " to "
                       << range_high << ". Try again" << std::endl;
@@ -43,8 +39,8 @@ T validateNumber(std::string request, T range_low, T range_high,
 class OverallDimensions 
 {
 public:
-    OverallDimensions();
-    ~OverallDimensions() {} // dtor
+    OverallDimensions(); 
+    ~OverallDimensions() {} 
 
 private:
     static

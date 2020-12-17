@@ -19,7 +19,7 @@ public:
 
 /*************** PURLIN PROP **********************/
 
-// slupek
+// s³upek
 class PurlinProp : public Element 
 {
 public:
@@ -30,7 +30,7 @@ public:
     void setParameters() override;
     void showParameters() override;
 
-    // parametry s³upka musz¹ zostaæ obliczone w CommonRafte
+    // parametry s³upka musz¹ zostaæ obliczone w CommonRafter
     void calculateParameters() override {} 
 };
 

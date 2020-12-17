@@ -35,14 +35,11 @@ void Truss::show()
 #endif
     getInitialDimensions();
 
-
-
     for (auto a : elements ) {
         a->showParameters();
     }
 
     cout << "\nCommon rafters distance: "
-      // << calcCommonRaftersDistance() << endl;
        << OvDim::getCommonRaftersDistance() << endl;
 
     cout << "Roof surface area: " <<  manip
@@ -132,14 +129,3 @@ HippedRoof::HippedRoof(bool purl) : GableRoof(purl)
     elements.push_back(new HipRafter);
 }
 
-
-
-/* dopracowaæ
-void HippedRoof::calculateJackRafters()
-{
-    double commRaftDist = OvDim::getCommonRaftersDistance();
-    double halfBuildWidth = OvDim::getBuildingWidth() / 2;
-
-
-}
-*/

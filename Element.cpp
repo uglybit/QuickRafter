@@ -5,14 +5,6 @@ using namespace std;
 
 void Element::setWidth() // ustawienie szerokoœci elementu
 {
-/*
-TEST // TEST - ZMIANA
-    double value;
-    cout << name << " width: " << std::endl;
-    cin >> value;
-    width = value;
-*/
- // TEST - ZMIANA
     double tmpValue;
     cout << name;
     tmpValue = validateNumber("\twidth:  ", 10.0, 500.0);
@@ -22,14 +14,6 @@ TEST // TEST - ZMIANA
 
 void Element::setHeight() // ustawienie wysokoœci elementu
 {
-/*
-    (!TEST)  ZMIANA
-    double value;
-    std::cout << name << " height: " << std::endl;
-    std::cin >> value;
-    height = value;
-*/
-    // TEST - ZMIANA
     cout << name;
     height = validateNumber("\theight:  ", 10.0, 500.0);
 }
@@ -79,7 +63,7 @@ WallPlate::WallPlate()
 
 void WallPlate::setParameters() // override
 {
-#ifndef TEST // TEST
+#ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
     setWidth();
     setHeight();
 

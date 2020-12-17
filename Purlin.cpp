@@ -11,16 +11,7 @@ Purlin::Purlin() {
 
 void Purlin::setParameters()
 {
-#ifndef TEST // TEST 
-   /* double value;
-
-    value = validateNumber("Purlin width: " , 50.0, 500.0);
-    width = value;
-
-    value = validateNumber("Purlin height: ", 50.0, 500.0);
-    height = value;
-    OvDim::setPurlinDimensions(value);
-*/
+#ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
     setWidth();
     setHeight();
     OvDim::setPurlinDimensions(height);
@@ -57,18 +48,11 @@ PurlinProp::PurlinProp()
 
 void PurlinProp::setParameters() // override
 {
- #ifndef TEST // TEST
+ #ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
     int value;
     setWidth();
     setHeight();
-//    cout << "Purlin prop quantity: " << endl;
-//    cin >> value;
-//    quantity = value;
     quantity = validateNumber<int>("Purlin prop quantity: ", 1, 10);
-
-//    cout << "Purlin prop distance: " << endl;
-//    cin >> value;
-//    OvDim::setPurlinPropDistance(value);
 
     double getter = OvDim::getBuildingWidth();
      value = validateNumber<double>("Purlin prop distance: ", 0.0, getter/3);

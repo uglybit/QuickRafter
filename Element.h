@@ -2,11 +2,10 @@
 #define ELEMENT_H
 
 #include "OverallDimensions.h"
-#include <cmath>
+#include <cmath> // do funkcji trygonometrycznych
 #include <iostream>
-//#include <iomanip>
 
-// do rozpoznawania typu *Element
+// do rozpoznawania typu klasy dziedzicz¹cej po *Element
 enum class ElementType {
     Element,
     CommonRafter,
@@ -24,7 +23,7 @@ using OvDim =  OverallDimensions; // skrócenie zapisu
 class Element
 {
 protected:
-    std::string name;
+    std::string name; // nazwa elementu
     double length{}, width, height; // trzy wymiary elementu
     double alphaAngle,  // k¹t dachu wzgêldem poziomu
         betaAngle; // 90 - alphAangle: k¹t dachu wzglêdem pionu

@@ -6,7 +6,6 @@ CommonRafter::CommonRafter() : Element()
 {
     name = "Common rafter";
     setParameters(); // override
-    //getQuantity(); // TEST
 }
 
 
@@ -19,7 +18,7 @@ CommonRafter::CommonRafter(int) : Element()  // tego konstruktora wywo³uje HipRa
 
 void CommonRafter::setParameters() // override
 {
-#ifndef TEST // TEST
+#ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
     double value;
     setWidth();
     OvDim::setCommonRafterWidth(width);
@@ -42,7 +41,6 @@ void CommonRafter::setParameters() // override
 
 void CommonRafter::calculateParameters() // override
 {
-
     // pobranie wartoœci w celu obliczenia wstêpnego k¹ta dachu
     double h = OvDim::getTrussHeight() - OvDim::getWallPlateHeight();
     double v = OvDim::getBuildingWidth()/2;
@@ -53,7 +51,7 @@ void CommonRafter::calculateParameters() // override
     calculateVerticalCut(); // d³ugoœæ zaciêcia
 
     // obliczenia w³aœciwe
-    calculateRafterAboveWallPlatt(); // wysokoœæ krowki nad mur³at¹ - determinuje w³aœciw¹ wartoœæ k¹ta dachu
+    calculateRafterAboveWallPlatt(); // wysokoœæ krokwi nad mur³at¹ - determinuje w³aœciw¹ wartoœæ k¹ta dachu
     calculateAngles(h - rafterAboveWallPlat, v); // obliczenia k¹ta dachu 
     calculateVerticalLine(OvDim::getCommonRafterHeight()); // ponowne obliczenie pionowej linii, bo watoœci siê zmieni³y
     calculateProperVerticalCut(); // w³aœciwa d³ugoœc zaiêcia krokwi w pionie
@@ -74,11 +72,10 @@ void CommonRafter::calculateVerticalLine(double value)
 }
 
 
-// wstêpnad³ugoœc zaciêcia
+// wstêpnad ³ugoœc zaciêcia
 void CommonRafter::calculateVerticalCut() 
 {                                        
     verticalCut = angleVerticalLine * cuttingRatio;
-    //std::cout << "Initial vertical cut (ratio): " << verticalCut << std::endl;
 }
 
 
@@ -87,7 +84,6 @@ void CommonRafter::calculateRafterAboveWallPlatt()
 {
     rafterAboveWallPlat = angleVerticalLine - verticalCut;
     OvDim::setRafterAboveWallPlat(rafterAboveWallPlat);
-    //std::cout << "Rafter height above wall platt " << rafterAboveWallPlat << std::endl;
 }
 
 
@@ -95,7 +91,6 @@ void CommonRafter::calculateRafterAboveWallPlatt()
 void CommonRafter::calculateHorizontalLine(double value)
 {
     angleHorizontalLine = value/sin(degreesToRadians(alphaAngle));
-    //std::cout << "Length ofhorizontal line on rafter: " << angleHorizontalLine << std::endl;
 }
 
 
@@ -103,7 +98,6 @@ void CommonRafter::calculateHorizontalLine(double value)
 void CommonRafter::calculateProperVerticalCut()
 {
     verticalCut = angleVerticalLine - rafterAboveWallPlat;
-    //std::cout << "Final vertical cut " << verticalCut << std::endl;
 }
 
 
@@ -130,9 +124,7 @@ void CommonRafter::calculateHorizontalCut()
 
 
 // CommonRafter i HipRafter korzystaj¹ z tej samej funkcji dletego jest paramter: pierwiastek(2 lub 1)
-void CommonRafter::calculateRafterDimensions(int sqroot)
-/* zmodyfikowaæ dla dachu bez p³atwi */
-
+void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaæ dla dachu bez p³atwi */
 {
     // DIMENSION EAVE - WALL PLATE
     double eave = OvDim::getHorizontalEaveLength(); // dlugosc okapu w poziomie
@@ -144,20 +136,20 @@ void CommonRafter::calculateRafterDimensions(int sqroot)
     propDistance *= sqrt(sqroot);
     buildWidth *= sqrt(sqroot);
 
-    // D£UGOŒC KROKWI - SEKCJE
+    // D£UGOŒC KROKWI - SEKCJE:
 
-    // sekcja: okap - mur³ata
+    // sekcja a) okap - mur³ata
     double cosValue = cos(degreesToRadians(alphaAngle));
     eaveToWallPlate = eave/cosValue; 
 
-    // sekcja: mur³ata - p³atew
+    // sekcja b) mur³ata - p³atew
     wallPlateToPurlin = propDistance/cosValue;
 
-    // sekcja: p³atew - szczyt
+    // sekcja c) p³atew - szczyt
     double dist = buildWidth - propDistance;
     purlinToTop = dist/cosValue;
 
-    // sekcja mur³ata - szczyt
+    // sekcja d) mur³ata - szczyt
     wallPlateToTop = buildWidth/cosValue;
     
     // d³ugoœc ca³kowita
@@ -168,7 +160,7 @@ void CommonRafter::calculateRafterDimensions(int sqroot)
         OvDim::setHipRaftTotalLength(rafterTotalLength);
     }
 
-#ifdef TEST // TEST - wypisanie wartoœci na bie¿¹co
+#ifdef TEST // w celach testowych - wypisanie obliczanych wartoœci na bie¿¹co
     cout << "Section length: eave - wall plate " << eaveToWallPlate << endl;
     cout << "Section length:  wall plate - purlin: " << wallPlateToPurlin << endl;
     cout << "Section length: purlin - top: " << purlinToTop << endl;
@@ -184,7 +176,7 @@ void CommonRafter::showParameters() // override
 {
 //    showDimensions();
     cout << "\n\n" << name << " parameters:"  << endl;
-    cout << manip; // format for values
+    cout << manip; // output format for values
     cout << "\t-rafter Above WallPlat: " << rafterAboveWallPlat << endl;
     cout << "\t-angle Vertical Line: " << angleVerticalLine << endl;
     cout << "\t-angle Horizontal Line: " << angleHorizontalLine << endl;
@@ -221,7 +213,7 @@ HipRafter::HipRafter() : CommonRafter(int())
 
 void HipRafter::setParameters()
 {
-#ifndef TEST // TEST
+#ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
     setWidth();
     OvDim::setHipWidth(width);
     setHeight();
@@ -255,7 +247,6 @@ void HipRafter::calculateParameters()
 
     // d³ugoœæ zaciêcia w pionie na zewnêtrznej powierzchni krokwi naro¿nej
     verticalCut = angleVerticalLine - OvDim::getRafterAboveWallPlat();
-    //std::cout << "vertical cut outer surface: " << verticalCut << std::endl;
 
     // pomocnicza pozioma lina na krokwi pod k¹tem
     calculateHorizontalLine(OvDim::getHipHeight());
@@ -263,7 +254,7 @@ void HipRafter::calculateParameters()
     // d³ugoœc zaciêcia w poziomie na zewnêtrznej powierzchni krokwi naro¿nej
     calculateHorizontalCut();
 
-    // second vertical and horizontal cut
+    // drugie zaciêcie: pionowe i poziome
     cutToSquare();
 
     // funkcja z klasy CommonRafter  - obliczanie d³ugoœci sekcji krokwi
@@ -283,11 +274,9 @@ void HipRafter::cutToSquare()
 
     // zaciêcie w pionie
     verticalCutToSquare = verticalCut + corr;
-    //std::cout << "Vertical cut square: " << verticalCutToSquare << std::endl;
 
     //zaciêcie w poziomie
     horizontalCutToSquare = verticalCutToSquare/tan(degreesToRadians(alphaAngle));
-    //std::cout << "Horizontal cut square: " << horizontalCutToSquare << std::endl;
 
     // wysokoœæ krokwi nad mur³at¹
     rafterAboveWallPlat = OvDim::getRafterAboveWallPlat(); 
@@ -300,11 +289,9 @@ void HipRafter::cutToSquare()
 // dodatek na powierzchnie zewnêtrzne
 void HipRafter::addToEdges()
 {
-    // addition for rafter dimensions on edges
     double cosValue = cos(degreesToRadians(alphaAngle));
     double rafterWidth = OvDim::getHipWidth();
     additionToEgdes = (rafterWidth*0.5)/cosValue;
-   // std::cout << "Addition to edges: " << additionToEgdes << std::endl;
 
     // wymiar na krawêdzich
     rafterTotalOnEdges = rafterTotalLength + additionToEgdes;

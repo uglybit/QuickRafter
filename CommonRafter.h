@@ -55,35 +55,4 @@ public:
     void calculateRafterDimensions(int sqroot);
 };
 
-
-/**************** HIP RAFTER ************************/
-
-//krokiew narożna
-class HipRafter : public CommonRafter // krokiew zwykÂła
-{
-public:
-
-    HipRafter();
-    ElementType type() const override { return ElementType::HipRafter; }
-
-private:
-    
-    double verticalCutToSquare, // długość pionoewgo zacięcia w osi krokwi - na naroże
-           horizontalCutToSquare,// długość poziomego zacięcia w osi krokwi - na naroże
-           angleCutToSquare; // wymiar pod kątem 45 stopni od zewnętrznej powierzchni krokwi do 
-                            // osi krokwi (linia pozioma)
-
-    int jackRaftersQuantity;
-   
-public:
-    void setParameters() override;
-    void showParameters() override;
-    void calculateParameters() override;
-
-    void cutToSquare();
-    void addToEdges();
-
-    void showHipParameters();
-};
-
 #endif

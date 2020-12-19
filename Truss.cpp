@@ -93,39 +93,4 @@ double Truss::calcArea() // override
 }
 
 
-/*********** GABLE ROOF ****************/
-
-
-// dach dwuspadowy
-GableRoof::GableRoof() : Truss()
-{
-    trussType = "Gable roof without purlins";
-}
-
-// dach dwuspadowy z p³atwi¹
-GableRoof::GableRoof(bool purl) : GableRoof()
-{
-    trussType = "Gable roof with purlins";
-    elements.push_back(new Purlin);
-    elements.push_back(new PurlinProp);
-}
-
-
-/*********** HIPPED ROOF ****************/
-
-
-// dach kopertowy
-HippedRoof::HippedRoof() : GableRoof()
-{
-    trussType = "Hipped roof without purlins";
-    elements.push_back(new HipRafter);
-}
-
-
-// dach kopertowy z p³atwi¹
-HippedRoof::HippedRoof(bool purl) : GableRoof(purl)
-{
-    trussType = "Hipped roof with purlins";
-    elements.push_back(new HipRafter);
-}
 

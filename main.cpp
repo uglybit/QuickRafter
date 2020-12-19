@@ -30,8 +30,9 @@ bool dataValidation(string info)
         // require_enter();
         return true;
     }
-    else
+    else {
         return false;
+    }
 }
 
 

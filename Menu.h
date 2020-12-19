@@ -2,6 +2,8 @@
 #define MENU_H
 
 #include "Truss.h" 
+#include "GableRoof.h"
+#include "HippedRoof.h"
 
 class Menu
 {

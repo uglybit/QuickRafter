@@ -2,10 +2,10 @@
 #define ELEMENT_H
 
 #include "OverallDimensions.h"
-#include <cmath> // do funkcji trygonometrycznych
+#include <cmath> 
 #include <iostream>
 
-// do rozpoznawania typu klasy dziedzicz¹cej po *Element
+// do rozpoznawania typu klasy dziedzicz¹cej po Element*
 enum class ElementType {
     Element,
     CommonRafter,
@@ -22,12 +22,17 @@ using OvDim =  OverallDimensions; // skrócenie zapisu
 
 class Element
 {
-protected:
+//protected:
     std::string name; // nazwa elementu
-    double length{}, width, height; // trzy wymiary elementu
-    double alphaAngle,  // k¹t dachu wzgêldem poziomu
-        betaAngle; // 90 - alphAangle: k¹t dachu wzglêdem pionu
-    int quantity{}; // iloœæ elementów
+    // trzy wymiary elementu
+
+protected: /*** zamienic na private */
+    double length{ 0.0 };
+    double width{ 0.0 };
+    double height{ 0.0 }; 
+    double alphaAngle{ 0.0 };  // k¹t dachu wzgêldem poziomu
+    double betaAngle{ 0.0 }; // 90 - alphAangle: k¹t dachu wzglêdem pionu
+    int quantity{0}; // iloœæ elementów
 
     // konwersja radiany - stopnie i odwrotnie
     static constexpr  double convRadtoDeg = 180 / 3.141592653589;
@@ -44,9 +49,13 @@ public:
     virtual void setParameters() = 0;
     virtual void showParameters() { std::cout << name; }
 
+    void setName(const std::string& n)
+    {
+        name = n;
+    }
     // ustawienie wymiarów   
     void setWidth();
-    void setHeight();
+    void setHeight(); 
     void setLength(double value) { length = value; }
     void setQuantity(int value) { quantity = value; }
 
@@ -61,26 +70,14 @@ public:
     void showDimensions(); 
 
     // get
+
+    double getWidth() { return width;  }
+    double getHeight() { return height;  }
     double getAlfaAngle() { return alphaAngle; }
     double getBetaAngle() { return betaAngle; }
     double getQuantity()  { return quantity; }
-    std::string getName() { return name; }
+    std::string& getName() { return name; }
 };
 
-
-/*************** WALL PLATE **********************/
-
-// mur³ata
-class WallPlate : public Element 
-{
-public:
-    WallPlate();
-
-    ElementType type() const override { return ElementType::WallPlate; }
-
-    void setParameters() override;
-    void calculateParameters() override;
-    void showParameters() override;
-};
 
 #endif // ELEMENT_H

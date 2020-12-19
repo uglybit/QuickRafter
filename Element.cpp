@@ -49,38 +49,3 @@ void Element::calculateAngles(double vertical, double horizontal)
     betaAngle = 90 - alphaAngle;
 }
 
-
-/*************** WALL PLATE **********************/
-
-
-// mur³ata
-WallPlate::WallPlate()
-{
-     name = "Wall plate";
-     setParameters();
-}
-
-
-void WallPlate::setParameters() // override
-{
-#ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
-    setWidth();
-    setHeight();
-
-#else // TEST - bez rêcznego wpisywania wartoœci
-    width = 140;
-    height  = 140;
-#endif
-}
-
-
-void WallPlate::showParameters() //override
-{
-    showDimensions();
-}
-
-
-void WallPlate::calculateParameters() //override
-{
-    length = OvDim::getTrussLength();
-}

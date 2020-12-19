@@ -14,8 +14,8 @@ if (dimensions != nullptr)
 void Menu::show()
 {
     int choice;
-    cout << "\n\t* QuickRafter *\n" << endl;
-    cout  << "1. Gable roof without purlins\n"
+    cout << "\n\t* QuickRafter *\n\n"
+         << "1. Gable roof without purlins\n"
          << "2. Gable roof with purlins\n"
          << "3. Hipped roof without purlins\n"
          << "4. Hipped roof with purlins\n" 

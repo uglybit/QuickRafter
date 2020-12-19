@@ -6,6 +6,8 @@
 #include "Element.h"
 #include "Purlin.h"
 #include "CommonRafter.h"
+#include "WallPlate.h"
+#include "PurlinProp.h"
 
 class Truss
 {
@@ -25,28 +27,6 @@ class Truss
     void show();
     void getInitialDimensions();
     double calcCommonRaftersDistance();
-};
-
-
-/*********** GABLE ROOF ****************/
-
-class GableRoof : public Truss
-{
- public:
-     GableRoof();
-     GableRoof(bool purl);
-};
-
-
-/*********** HIPPED ROOF ****************/
-
-
-class HippedRoof : public GableRoof
-{
- public:
-
-     HippedRoof();
-     HippedRoof(bool purl);
 };
 
 #endif // TRUSS_H

@@ -4,7 +4,7 @@
 #include "GableRoof.h"
 #include "HipRafter.h"
 
-class HippedRoof : public GableRoof
+class HippedRoof final: public GableRoof
 {
 public:
     HippedRoof();

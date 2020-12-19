@@ -4,7 +4,7 @@
 #include "CommonRafter.h"
 
 //krokiew naro�na
-class HipRafter : public CommonRafter // krokiew zwyk³a
+class HipRafter final: public CommonRafter // krokiew zwyk³a
 {
 public:
 

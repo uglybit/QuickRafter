@@ -11,18 +11,20 @@
 
 class Truss
 {
- protected:
+private:
     std::string trussType;
-    double surfaceArea;
+    double surfaceArea{ 0.0 };
+protected:
     std::vector<Element*> elements;
 
- public:
-     Truss();
-     virtual ~Truss();
+public:
+    Truss();
+    virtual ~Truss();
 
-    std::string getTrussType() { return trussType; }
-
+    void setTrussType(std::string type);
+    const std::string& getTrussType() const;
     double calcArea();
+    const double getRoofArea() const;
     void calcParam();
     void show();
     void getInitialDimensions();

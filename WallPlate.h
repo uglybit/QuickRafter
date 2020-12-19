@@ -4,7 +4,7 @@
 #include "Element.h"
 
 // mur³ata
-class WallPlate : public Element
+class WallPlate final: public Element
 {
 public:
     WallPlate();

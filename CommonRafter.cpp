@@ -21,9 +21,9 @@ void CommonRafter::setParameters() // override
 #ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
     double value;
     setWidth();
-    OvDim::setCommonRafterWidth(width);
+    OvDim::setCommonRafterWidth(getWidth());
     setHeight();
-    OvDim::setCommonRafterHeight(height);
+    OvDim::setCommonRafterHeight(getHeight());
     value = validateNumber("Approximate distance between common rafters: ", 100.0, 3000.0);
     OvDim::setCommonRafterDistance(value);
     horizontalEaveLength = OvDim::getHorizontalEaveLength();
@@ -68,11 +68,11 @@ void CommonRafter::calculateParameters() // override
 // d³ugoœæ poziomej linii narysowanej na krokwi pod odpowiednim k¹tem - pomocnicza
 void CommonRafter::calculateVerticalLine(double value)
 {
-    angleVerticalLine = value/sin(degreesToRadians(betaAngle)); 
+    angleVerticalLine = value/sin(degreesToRadians(getBetaAngle())); 
 }
 
 
-// wstêpnad ³ugoœc zaciêcia
+// wstêpna d³ugoœc zaciêcia
 void CommonRafter::calculateVerticalCut() 
 {                                        
     verticalCut = angleVerticalLine * cuttingRatio;
@@ -90,7 +90,7 @@ void CommonRafter::calculateRafterAboveWallPlatt()
 // pomocnicza pozioma linia na krokwi pod k¹tem
 void CommonRafter::calculateHorizontalLine(double value)
 {
-    angleHorizontalLine = value/sin(degreesToRadians(alphaAngle));
+    angleHorizontalLine = value/sin(degreesToRadians(getAlphaAngle()));
 }
 
 
@@ -105,7 +105,7 @@ void CommonRafter::calculateProperVerticalCut()
 void CommonRafter::calculatePurlinAndPropLength() // if there is a purlin
 {
     double pPropDist = OvDim::getPurlinPropDistance(); // odleg³oœæ s³upka od mur³aty 
-    double tgAngle = tan(degreesToRadians(alphaAngle)); // stosunek d³ugoœci
+    double tgAngle = tan(degreesToRadians(getAlphaAngle())); // stosunek d³ugoœci
     double wallPlateHeight = OvDim::getWallPlateHeight(); // wysokoœæ mur³aty
     double purlinDim = OvDim::getPurlinDimensions(); // wymiary p³atwi
     double propLength = tgAngle* pPropDist + wallPlateHeight - purlinDim; // d³ugoœæ s³upka
@@ -119,7 +119,7 @@ void CommonRafter::calculatePurlinAndPropLength() // if there is a purlin
 
 void CommonRafter::calculateHorizontalCut()
 {
-    horizontalCut = verticalCut/tan(degreesToRadians(alphaAngle));
+    horizontalCut = verticalCut/tan(degreesToRadians(getAlphaAngle()));
 }
 
 
@@ -139,7 +139,7 @@ void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaæ dla dac
     // D£UGOŒC KROKWI - SEKCJE:
 
     // sekcja a) okap - mur³ata
-    double cosValue = cos(degreesToRadians(alphaAngle));
+    double cosValue = cos(degreesToRadians(getAlphaAngle()));
     eaveToWallPlate = eave/cosValue; 
 
     // sekcja b) mur³ata - p³atew
@@ -182,8 +182,8 @@ void CommonRafter::showParameters() // override
     cout << "\t-angle Horizontal Line: " << angleHorizontalLine << endl;
     cout << "\t-horizontal Eave Length: " << horizontalEaveLength << endl;
     cout << setprecision(2);
-    cout << "\t-alpha angle: " << alphaAngle << endl;
-    cout << "\t-beta angle " << betaAngle << endl;
+    cout << "\t-alpha angle: " << getAlphaAngle() << endl;
+    cout << "\t-beta angle " << getBetaAngle() << endl;
     cout << manip; 
     cout << "\t-vertical Cut: " << verticalCut << endl;
     cout << "\t-horizontal Cut: " << horizontalCut << endl;

@@ -4,7 +4,7 @@
 #include "Element.h"
 
 // p³atew 
-class Purlin : public Element 
+class Purlin final: public Element 
 {
 public:
     Purlin();

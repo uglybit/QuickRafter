@@ -93,4 +93,7 @@ double Truss::calcArea() // override
 }
 
 
-
+const double Truss::getRoofArea() const
+{
+    return surfaceArea;
+}

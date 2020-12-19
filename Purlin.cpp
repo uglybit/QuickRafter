@@ -17,8 +17,8 @@ void Purlin::setParameters()
     OvDim::setPurlinDimensions(getHeight());
     
 #else  // TEST - bez rêcznego wpisywania wartoœci
-    height = 120;
-    width = 120;
+    setHeight(120);
+    setWidth(120);
     OvDim::setPurlinDimensions(120);
 #endif
 }
@@ -26,7 +26,7 @@ void Purlin::setParameters()
 
 void Purlin::calculateParameters() // override
 {
-    length = OvDim::getBuildingLength();
+    setLength(OvDim::getBuildingLength());
 }
 
 

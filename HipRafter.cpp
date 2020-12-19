@@ -69,13 +69,13 @@ void HipRafter::cutToSquare()
 {
     // w zaleznosci od szerokosci krokwi naroznej  wymiar zaciêcia bedzie sie zmieniac
     double hipWidth = OvDim::getHipWidth();
-    double corr = tan(degreesToRadians(alphaAngle)) * (0.5 * hipWidth);
+    double corr = tan(degreesToRadians(getAlphaAngle())) * (0.5 * hipWidth);
 
     // zaciêcie w pionie
     verticalCutToSquare = verticalCut + corr;
 
     //zaciêcie w poziomie
-    horizontalCutToSquare = verticalCutToSquare / tan(degreesToRadians(alphaAngle));
+    horizontalCutToSquare = verticalCutToSquare / tan(degreesToRadians(getAlphaAngle()));
 
     // wysokoœæ krokwi nad mur³at¹
     rafterAboveWallPlat = OvDim::getRafterAboveWallPlat();
@@ -88,7 +88,7 @@ void HipRafter::cutToSquare()
 // dodatek na powierzchnie zewnêtrzne
 void HipRafter::addToEdges()
 {
-    double cosValue = cos(degreesToRadians(alphaAngle));
+    double cosValue = cos(degreesToRadians(getAlphaAngle()));
     double rafterWidth = OvDim::getHipWidth();
     additionToEgdes = (rafterWidth * 0.5) / cosValue;
 

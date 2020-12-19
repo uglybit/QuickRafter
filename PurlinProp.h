@@ -4,7 +4,7 @@
 #include "Element.h"
 
 // s³upek
-class PurlinProp : public Element
+class PurlinProp final: public Element
 {
 public:
     PurlinProp();

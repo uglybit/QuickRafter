@@ -14,8 +14,8 @@ void WallPlate::setParameters() // override
     setHeight();
 
 #else // TEST - bez rêcznego wpisywania wartoœci
-    width = 140;
-    height = 140;
+    setWidth(140);
+    setHeight(140);
 #endif
 }
 

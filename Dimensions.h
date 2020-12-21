@@ -4,36 +4,12 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include "Functions.h"
 
 #define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartoœci
                 // zostan¹ u¿yte wartoœci domyœlne */ wyrzuciæ to st¹d
 
-bool dataValidation(std::string info);
-std::ostream& manip(std::ostream&);
 
-
-// walidacja danych wejœciowych - liczba
-template<typename T>
-T validateNumber(std::string request, T range_low, T range_high, 
-                  std::string info_bad_data = "This is not propper value")
-{
-    T n;
-    do
-    {
-        std::cout << std::endl << request << std::endl;
-        std::cin >> n;
-        if (dataValidation(info_bad_data))// z³e dane 
-            continue; 
-        else if (n < range_low || n > range_high) // jeœli poza zakresem 
-        {
-            std::cout << "You can choose from: " << range_low << " to "
-                      << range_high << ". Try again" << std::endl;
-        }
-        else break; // wszystko ok- wyjœcie z pêtli
-    } while (true);
-
-    return n;
-}
 
 // klasa wymiary ogolne - dane wejsciowe wprowadzane przez uzytkownika
 class Dimensions 
@@ -92,7 +68,6 @@ public:
     void setHipHeight(double h);
     void setHipRaftTotalLength(double len) {hipRaftTotalLength = len; }
     void setRafterAboveWallPlat(double value); // obliczenia pomocnicze
-    
 
      // get
     double getPurlinPropLength() const;

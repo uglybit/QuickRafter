@@ -13,7 +13,6 @@ if (truss != nullptr)
 // pokazuje g³ówne menu
 void Menu::show()
 {
-    int choice;
     cout << "\n\t* QuickRafter *\n\n"
          << "1. Gable roof without purlins\n"
          << "2. Gable roof with purlins\n"
@@ -21,7 +20,7 @@ void Menu::show()
          << "4. Hipped roof with purlins\n" 
          << endl;
 
-    choice = validateNumber<int>("Choose option 1-4: ", 1, 4);
+    auto choice = validateNumber("Choose option 1-4: ", 1, 4);
 
     Dimensions dimensions;
     

@@ -3,7 +3,7 @@
 using namespace std;
 
 
-Element::Element(Dimensions& dim) : dimension{dim}
+Element::Element( Dimensions& dim) : dimensions{dim}
 {
 
 }
@@ -11,7 +11,7 @@ Element::Element(Dimensions& dim) : dimension{dim}
 
 const Dimensions* Element::getDimensions()
 {
-    return &dimension;
+    return &dimensions;
 }
 
 

@@ -34,7 +34,7 @@ private:
         
     double alphaAngle{ 0.0 }; // k¹t dachu wzgêldem poziomu  
     double betaAngle{ 0.0 }; // 90 - alphAangle: k¹t dachu wzglêdem pionu
-    Dimensions& dimension;
+    Dimensions& dimensions;
 
 public:
     Element(Dimensions& dim);
@@ -76,7 +76,7 @@ public:
     void setHeight(double heigh); // TESTY!
     void setWidth(double heigh); 
     const Dimensions* getDimensions();
-    Dimensions* setDimensions() { return &dimension;  }
+    Dimensions* setDimensions() { return &dimensions;  }
 };
 
 

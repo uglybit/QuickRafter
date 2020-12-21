@@ -7,11 +7,8 @@
 #include "Functions.h"
 
 #define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartoœci
-                // zostan¹ u¿yte wartoœci domyœlne */ wyrzuciæ to st¹d
 
-
-
-// klasa wymiary ogolne - dane wejsciowe wprowadzane przez uzytkownika
+// klasa wymiary ogolne
 class Dimensions 
 {
 private:
@@ -20,13 +17,13 @@ private:
     double trussHeight{ 0.0 }; // wysokosc wiezby
     double trussLength{ 0.0 }; // dlugosc wiezby - z wiatrolapami
     double wallPlateHeight{ 0.0 }; // wysokosc murlaty
-    double purlinPropDistance{ 0.0 }; // odleg³oœæ podpory platwi - s³upka
-    double horizontalEaveLength{ 0.0 }; // dlugosc okapu w poziomie
+    double purlinPropDistance{ 0.0 }; 
+    double horizontalEaveLength{ 0.0 }; 
 
-    double commonRafterHeight{ 0.0 }; // wymiar krokwi - wysokosc
-    double commonRafterWidth{ 0.0 }; // wymiar krokwi szerokosc
-    double commonRaftersDistance{ 0.0 }; // odleglosc miedzy krokwiami
-    double commRaftTotalLength{ 0.0 }; // d³ugosc krokwi
+    double commonRafterHeight{ 0.0 }; 
+    double commonRafterWidth{ 0.0 }; 
+    double commonRaftersDistance{ 0.0 }; 
+    double commRaftTotalLength{ 0.0 }; 
 
     double hipRafterHeight{ 0.0 }; // wymiar krokwi naroznej - wysokosc
     double hipRafterWidth{ 0.0 }; // szerokosc krokwi naroznej
@@ -38,25 +35,26 @@ private:
     double purlinPropLength{ 0.0 }; // d³ugosc slupka - obliczane w CommonRafter
 
     double rafterAboveWallPlat{ 0.0 }; // wysokosc krokwi nad murlata w pionie
+    double alphaAngle, betaAngle; // katy dachu
+
     int numberOfRafters; // liczba krokwi - dopracowac
     bool purlin;  // informacja - czy wystepuje platew w projekcie
-    double alphaAngle, betaAngle; // katy dachu
 
 public:
     Dimensions();
     ~Dimensions() = default;
 
     // wartosci wprowadzane przez uzytkownika
-    void setBuildingLength(double value); // ustawienie dlugosci budynku 
-    void setBuildingWidth(double value); // ustawienie szerokosci budynku
-    void setTrussHeight(double value); // ustawienie wysokosci wiezby
-    void setTrussLength(double value); // ustawienie d³ugoœci wiezby
-    void setWallPlateHeight(double value); // ustawienie wysokosci na jakiej znajduje sie murlata
-    void setHorizontalEaveLength(double value); // ustawienie d³ugosci okapu
-    void setPurlin(bool h); // ustawienie informacji - czy jest platew
-    void setPurlinPropDistance(double value); // ustawienie odleglosci slupka 
-    void setCommonRafterHeight(double value); // ustawienie wysokosci krokwi
-    void setCommonRafterWidth(double value);  // ustawienie szerokosci krokwi
+    void setBuildingLength(double value); 
+    void setBuildingWidth(double value); 
+    void setTrussHeight(double value); 
+    void setTrussLength(double value); 
+    void setWallPlateHeight(double value);
+    void setHorizontalEaveLength(double value); 
+    void setPurlin(bool h); 
+    void setPurlinPropDistance(double value); 
+    void setCommonRafterHeight(double value); 
+    void setCommonRafterWidth(double value); 
     void setCommonRafterDistance(double value) {commonRaftersDistance = value; } 
 
     // wartoœci obliczane przez program
@@ -78,7 +76,7 @@ public:
     double getHipHeight() const;
     double getHipRaftTotalLength() const { return hipRaftTotalLength; }
     double getRafterAboveWallPlat() const;
-    bool isPurlin() const; // informacja - czy jest p³atew
+    bool isPurlin() const;
     double getBuildingLength() const;
     double getBuildingWidth() const;
     double getTrussHeight() const;

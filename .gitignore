@@ -4,9 +4,6 @@ quickrafter.vcxproj
 quickrafter.vcxproj.filters
 quickrafter.vcxproj.user
 .vs/
-CommonRafter.h.gch
-Element.h.gch
-Menu.h.gch
-OverallDimensions.h.gch
-Purlin.h.gch
-Truss.h.gch
+*.h.gch
+a.out
+compil

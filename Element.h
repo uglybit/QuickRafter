@@ -61,18 +61,20 @@ public:
     double radiansToDegrees(double value);
     double degreesToRadians(double value); 
     void calculateAngles(double vertical, double horizontal); 
-
-    // pokazuje wymiary elementu
     void showDimensions(); 
 
     // get
-
     double getWidth() const { return width;  }
     double getHeight() const { return height;  }
     double getAlphaAngle() const { return alphaAngle; }
     double getBetaAngle() const { return betaAngle; }
     double getQuantity() const { return quantity; }
     const std::string& getName() { return name; }
+
+
+    /* TESTY */
+    void setHeight(double heigh); // TESTY!
+    void setWidth(double heigh); 
 };
 
 

@@ -6,6 +6,10 @@ WallPlate::WallPlate()
     setParameters();
 }
 
+ElementType WallPlate::type() const
+{ 
+    return ElementType::WallPlate;
+}
 
 void WallPlate::setParameters() // override
 {

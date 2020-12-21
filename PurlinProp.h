@@ -4,13 +4,12 @@
 #include "Element.h"
 
 // s³upek
-class PurlinProp final: public Element
+class PurlinProp final: public Element // public : Purlin???
 {
 public:
     PurlinProp();
 
-    ElementType type() const override { return ElementType::PurlinProp; }
-
+    ElementType type() const override;
     void setParameters() override;
     void showParameters() override;
 

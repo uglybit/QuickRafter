@@ -9,6 +9,12 @@ PurlinProp::PurlinProp()
 }
 
 
+ElementType PurlinProp::type() const 
+{ 
+    return ElementType::PurlinProp; 
+}
+
+
 void PurlinProp::setParameters() // override
 {
 #ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
@@ -25,7 +31,6 @@ void PurlinProp::setParameters() // override
 #else  // TEST - bez rêcznego wpisywania wartoœci
     setWidth(100);
     setHeight(100);
-    double value;
     setQuantity(8);
     OvDim::setPurlinPropDistance(1800);
 #endif

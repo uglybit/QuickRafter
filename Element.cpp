@@ -11,6 +11,15 @@ void Element::setWidth() // ustawienie szerokoœci elementu
     width = tmpValue; 
 }
 
+void Element::setWidth(double widt) // TESTY!
+{
+    width = widt;
+}
+void Element::setHeight(double heigh) // TESTY!
+{
+    height = heigh;
+}
+
 
 void Element::setHeight() // ustawienie wysokoœci elementu
 {

@@ -24,7 +24,7 @@ public:
     void setTrussType(std::string type);
     const std::string& getTrussType() const;
     double calcArea();
-    const double getRoofArea() const;
+    double getRoofArea() const;
     void calcParam();
     void show();
     void getInitialDimensions();

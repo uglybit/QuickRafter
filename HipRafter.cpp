@@ -45,7 +45,8 @@ void HipRafter::calculateParameters()
     calculateVerticalLine(OvDim::getHipHeight());
 
     // d³ugoœæ zaciêcia w pionie na zewnêtrznej powierzchni krokwi naro¿nej
-    verticalCut = angleVerticalLine - OvDim::getRafterAboveWallPlat();
+    double vertCut = getAngleVerticalLine() - OvDim::getRafterAboveWallPlat();
+    setVerticalCut(vertCut);
 
     // pomocnicza pozioma lina na krokwi pod k¹tem
     calculateHorizontalLine(OvDim::getHipHeight());
@@ -69,16 +70,16 @@ void HipRafter::cutToSquare()
 {
     // w zaleznosci od szerokosci krokwi naroznej  wymiar zaciêcia bedzie sie zmieniac
     double hipWidth = OvDim::getHipWidth();
-    double corr = tan(degreesToRadians(getAlphaAngle())) * (0.5 * hipWidth);
+    double correction = tan(degreesToRadians(getAlphaAngle())) * (0.5 * hipWidth);
 
     // zaciêcie w pionie
-    verticalCutToSquare = verticalCut + corr;
+    verticalCutToSquare = getVerticalCut() + correction;
 
     //zaciêcie w poziomie
     horizontalCutToSquare = verticalCutToSquare / tan(degreesToRadians(getAlphaAngle()));
 
     // wysokoœæ krokwi nad mur³at¹
-    rafterAboveWallPlat = OvDim::getRafterAboveWallPlat();
+    setRafterAboveWallPlate(OvDim::getRafterAboveWallPlat());
 
     // dl³ugoœæ zaciêcia w poziomie: od powierzchni zewnêtrznej do osi krowki
     angleCutToSquare = (0.5 * OvDim::getHipWidth()) * sqrt(2);
@@ -90,13 +91,11 @@ void HipRafter::addToEdges()
 {
     double cosValue = cos(degreesToRadians(getAlphaAngle()));
     double rafterWidth = OvDim::getHipWidth();
-    additionToEgdes = (rafterWidth * 0.5) / cosValue;
+    setAdditionToEgdes((rafterWidth * 0.5) / cosValue);
 
     // wymiar na krawêdzich
-    rafterTotalOnEdges = rafterTotalLength + additionToEgdes;
-    //std::cout << "Rafter dimension on edges, ver. A: " << rafterTotalOnEdges << std::endl;
-    //std::cout << "Rafter dimension on edges, ver. B: " << rafterTotalOnEdges - 2*additionToEgdes << std::endl;
-}
+    setRafterTotalOnEdges(getRafterTotalLength() + getAdditionToEgdes());
+ }
 
 
 void HipRafter::showParameters() // override

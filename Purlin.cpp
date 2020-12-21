@@ -2,10 +2,17 @@
 
 using namespace std;
 
-Purlin::Purlin() {
+Purlin::Purlin() 
+{
     setName("Purlin");
     OvDim::setPurlin(true);
     setParameters();
+}
+
+
+ElementType Purlin::type() const
+{ 
+    return ElementType::Purlin;
 }
 
 

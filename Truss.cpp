@@ -18,6 +18,7 @@ Truss::~Truss()
     }
 }
 
+
 // wywo³uje funkcjê obliczaj¹c¹ dla ka¿dego elementu
 void Truss::calcParam()
 {
@@ -52,7 +53,6 @@ void Truss::getInitialDimensions()
 {
     cout << "\n\t! ALL VALUES IN MILIMETERS !\n" << endl;
     cout << "Initial dimensions: \n";
-
     cout << "\tBuliding length: " << OvDim::getBuildingLength() << endl;
     cout << "\tBuliding width: " << OvDim::getBuildingWidth() << endl;
     cout << "\tTruss height: " << OvDim::getTrussHeight() << endl;
@@ -93,7 +93,7 @@ double Truss::calcArea() // override
 }
 
 
-const double Truss::getRoofArea() const
+double Truss::getRoofArea() const
 {
     return surfaceArea;
 }

@@ -9,8 +9,7 @@ class WallPlate final: public Element
 public:
     WallPlate();
 
-    ElementType type() const override { return ElementType::WallPlate; }
-
+    ElementType type() const override;
     void setParameters() override;
     void calculateParameters() override;
     void showParameters() override;

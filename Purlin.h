@@ -9,12 +9,10 @@ class Purlin final: public Element
 public:
     Purlin();
 
-    ElementType type() const override { return ElementType::Purlin; }
-
+    ElementType type() const override;
     void calculateParameters() override;
     void setParameters() override;
     void showParameters() override;
 };
-
 
 #endif // PURLIN_H

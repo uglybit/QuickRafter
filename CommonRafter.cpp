@@ -29,10 +29,10 @@ void CommonRafter::setParameters() // override
     horizontalEaveLength = OvDim::getHorizontalEaveLength();
 
 #else  // TEST - bez rêcznego wpisywania wartoœci
-    height = 180;
-    width = 90;
-    OvDim::setCommonRafterHeight(height);
-    OvDim::setCommonRafterWidth(width);
+    setHeight(180);
+    setWidth(90);
+    OvDim::setCommonRafterHeight(getHeight());
+    OvDim::setCommonRafterWidth(getWidth());
     OvDim::setCommonRafterDistance(800);
     horizontalEaveLength = OvDim::getHorizontalEaveLength();
 #endif
@@ -42,9 +42,9 @@ void CommonRafter::setParameters() // override
 void CommonRafter::calculateParameters() // override
 {
     // pobranie wartoœci w celu obliczenia wstêpnego k¹ta dachu
-    double h = OvDim::getTrussHeight() - OvDim::getWallPlateHeight();
-    double v = OvDim::getBuildingWidth()/2;
-    calculateAngles(h, v); // wstêpne wartoœci k¹tów - ulegn¹ zmianie
+    double height = OvDim::getTrussHeight() - OvDim::getWallPlateHeight();
+    double width = OvDim::getBuildingWidth()/2;
+    calculateAngles(height, width); // wstêpne wartoœci k¹tów - ulegn¹ zmianie
 
     // obliczenia wstêpne
     calculateVerticalLine(OvDim::getCommonRafterHeight()); // d³ugoœc pionowej kreski na krokwi
@@ -52,7 +52,7 @@ void CommonRafter::calculateParameters() // override
 
     // obliczenia w³aœciwe
     calculateRafterAboveWallPlatt(); // wysokoœæ krokwi nad mur³at¹ - determinuje w³aœciw¹ wartoœæ k¹ta dachu
-    calculateAngles(h - rafterAboveWallPlat, v); // obliczenia k¹ta dachu 
+    calculateAngles(height - rafterAboveWallPlat, width); // obliczenia k¹ta dachu 
     calculateVerticalLine(OvDim::getCommonRafterHeight()); // ponowne obliczenie pionowej linii, bo watoœci siê zmieni³y
     calculateProperVerticalCut(); // w³aœciwa d³ugoœc zaiêcia krokwi w pionie
     calculateHorizontalLine(OvDim::getCommonRafterHeight()); // // d³ugoœc poziomej kreski na krokwi

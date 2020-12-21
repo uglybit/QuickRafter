@@ -7,7 +7,7 @@
 class PurlinProp final: public Element // public : Purlin???
 {
 public:
-    PurlinProp();
+    PurlinProp(Dimensions& dim);
 
     ElementType type() const override;
     void setParameters() override;

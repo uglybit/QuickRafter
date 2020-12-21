@@ -1,6 +1,6 @@
 #include "WallPlate.h"
 
-WallPlate::WallPlate()
+WallPlate::WallPlate(Dimensions& dim) : Element(dim)
 {
     setName("Wall plate");
     setParameters();
@@ -32,5 +32,5 @@ void WallPlate::showParameters() //override
 
 void WallPlate::calculateParameters() //override
 {
-    setLength(OvDim::getTrussLength());
+    setLength(getDimensions()->getTrussLength());
 }

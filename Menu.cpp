@@ -5,8 +5,8 @@ using namespace std;
 Menu::~Menu() { // destrukor
 if (truss != nullptr)
     delete truss;
-if (dimensions != nullptr)
-    delete dimensions;
+//if (dimensions != nullptr)
+  //  delete dimensions;
 }
 
 
@@ -23,14 +23,14 @@ void Menu::show()
 
     choice = validateNumber<int>("Choose option 1-4: ", 1, 4);
 
-    dimensions = new OverallDimensions;
+    Dimensions dimensions;
     
     switch(choice)
     {
-        case 1: truss = new GableRoof(); break;
-        case 2: truss = new GableRoof(true); break;
-        case 3: truss = new HippedRoof("string"); break;
-        case 4: truss = new HippedRoof(true); break;
+        case 1: truss = new GableRoof(dimensions); break;
+        case 2: truss = new GableRoof(dimensions, true); break;
+        case 3: truss = new HippedRoof(dimensions, "string"); break;
+        case 4: truss = new HippedRoof(dimensions, true); break;
     }
 
     cout << truss->getTrussType() << endl; // informacja o typie dachu

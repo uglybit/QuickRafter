@@ -1,7 +1,7 @@
 #ifndef ELEMENT_H
 #define ELEMENT_H
 
-#include "OverallDimensions.h"
+#include "Dimensions.h"
 #include <cmath> 
 #include <iostream>
 
@@ -17,8 +17,6 @@ enum class ElementType {
     CollarBeam
     };
 
-
-using OvDim =  OverallDimensions; // skrócenie zapisu
 
 class Element
 {
@@ -36,8 +34,10 @@ private:
         
     double alphaAngle{ 0.0 }; // k¹t dachu wzgêldem poziomu  
     double betaAngle{ 0.0 }; // 90 - alphAangle: k¹t dachu wzglêdem pionu
-    
+    Dimensions& dimension;
+
 public:
+    Element(Dimensions& dim);
     virtual ~Element() = default;
 
     // do sprawdzenia typu elementu
@@ -75,6 +75,8 @@ public:
     /* TESTY */
     void setHeight(double heigh); // TESTY!
     void setWidth(double heigh); 
+    const Dimensions* getDimensions();
+    Dimensions* setDimensions() { return &dimension;  }
 };
 
 

@@ -2,11 +2,17 @@
 
 using namespace std;
 
-Truss::Truss()
+Truss::Truss(Dimensions& dim) : dimension{ dim }
 {
-    elements.push_back(new WallPlate);
-    elements.push_back(new CommonRafter);
+    elements.push_back(new WallPlate(dim));
+    elements.push_back(new CommonRafter(dim));
     calcCommonRaftersDistance();
+}
+
+
+const Dimensions* Truss::getDimensions()
+{
+    return &dimension;
 }
 
 
@@ -41,7 +47,7 @@ void Truss::show()
     }
 
     cout << "\nCommon rafters distance: "
-       << OvDim::getCommonRaftersDistance() << endl;
+       << getDimensions()->getCommonRaftersDistance() << endl;
 
     cout << "Roof surface area: " <<  manip
          << calcArea() << " m2" << endl;
@@ -53,30 +59,30 @@ void Truss::getInitialDimensions()
 {
     cout << "\n\t! ALL VALUES IN MILIMETERS !\n" << endl;
     cout << "Initial dimensions: \n";
-    cout << "\tBuliding length: " << OvDim::getBuildingLength() << endl;
-    cout << "\tBuliding width: " << OvDim::getBuildingWidth() << endl;
-    cout << "\tTruss height: " << OvDim::getTrussHeight() << endl;
-    cout << "\tTruss length: " << OvDim::getTrussLength() << endl;
-    cout << "\tWall plate level: " << OvDim::getWallPlateHeight() << endl;
-    cout << "\tPurlin prop distance: " << OvDim::getPurlinPropDistance() << endl;
-    cout << "\tHorizontal eave length: " << OvDim::getHorizontalEaveLength() << endl;
-    cout << "\tCommon rafter height: " << OvDim::getCommonRafterHeight() << endl;
-    cout << "\tCommon rafter width: " << OvDim::getCommonRafterWidth() << endl;
-    cout << "\tHip rafter height: " << OvDim::getHipHeight() << endl;
-    cout << "\tHip rafter width: " << OvDim::getHipWidth() << endl;
+    cout << "\tBuliding length: " << getDimensions()->getBuildingLength() << endl;
+    cout << "\tBuliding width: " << getDimensions()->getBuildingWidth() << endl;
+    cout << "\tTruss height: " << getDimensions()->getTrussHeight() << endl;
+    cout << "\tTruss length: " << getDimensions()->getTrussLength() << endl;
+    cout << "\tWall plate level: " << getDimensions()->getWallPlateHeight() << endl;
+    cout << "\tPurlin prop distance: " << getDimensions()->getPurlinPropDistance() << endl;
+    cout << "\tHorizontal eave length: " << getDimensions()->getHorizontalEaveLength() << endl;
+    cout << "\tCommon rafter height: " << getDimensions()->getCommonRafterHeight() << endl;
+    cout << "\tCommon rafter width: " << getDimensions()->getCommonRafterWidth() << endl;
+    cout << "\tHip rafter height: " << getDimensions()->getHipHeight() << endl;
+    cout << "\tHip rafter width: " << getDimensions()->getHipWidth() << endl;
 }
 
 
 // obliczenie odleg³oœci miêdzy krokwiami
 double Truss::calcCommonRaftersDistance() // override
 {
-    double trussLength = OvDim::getTrussLength();
+    double trussLength = getDimensions()->getTrussLength();
     int numberOfRafters = trussLength /
-        (OvDim::getCommonRafterWidth() +
-            OvDim::getCommonRaftersDistance());
+        (getDimensions()->getCommonRafterWidth() +
+            getDimensions()->getCommonRaftersDistance());
     numberOfRafters += 1; // liczba krokwi
     double rafterDistance = (trussLength / numberOfRafters); // odleglosc miedzy krokwiami
-    OvDim::setCommonRafterDistance(rafterDistance);
+    setDimensions()->setCommonRafterDistance(rafterDistance);
     return rafterDistance;
 }
 
@@ -84,9 +90,9 @@ double Truss::calcCommonRaftersDistance() // override
 //oblicznie powierzchni dachu
 double Truss::calcArea() // override
 {
-    double h = OvDim::getCommRaftTotalLength();
+    double h = getDimensions()->getCommRaftTotalLength();
 
-    double w = OvDim::getTrussLength();
+    double w = getDimensions()->getTrussLength();
     surfaceArea = h*w*2;
     surfaceArea /= 1000000; // result in m^2
     return surfaceArea;
@@ -96,4 +102,16 @@ double Truss::calcArea() // override
 double Truss::getRoofArea() const
 {
     return surfaceArea;
+}
+
+
+void Truss::setTrussType(const std::string& type)
+{
+    trussType = type;
+}
+
+
+const std::string& Truss::getTrussType() const
+{
+    return trussType;
 }

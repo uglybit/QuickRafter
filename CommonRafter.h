@@ -28,8 +28,8 @@ private:
     const double cuttingRatio = 0.25; 
 
 public:
-    CommonRafter();
-    explicit CommonRafter(int );
+    CommonRafter(Dimensions& dim);
+    explicit CommonRafter(Dimensions& dim, int count);
 
     ElementType type() const override { return ElementType::CommonRafter; }
 

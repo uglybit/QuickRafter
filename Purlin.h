@@ -7,7 +7,7 @@
 class Purlin final: public Element 
 {
 public:
-    Purlin();
+    Purlin(Dimensions& dim);
 
     ElementType type() const override;
     void calculateParameters() override;

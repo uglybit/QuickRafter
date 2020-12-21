@@ -7,7 +7,7 @@
 class WallPlate final: public Element
 {
 public:
-    WallPlate();
+    WallPlate(Dimensions& dim);
 
     ElementType type() const override;
     void setParameters() override;

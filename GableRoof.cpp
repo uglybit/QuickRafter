@@ -1,27 +1,16 @@
 #include "GableRoof.h"
 
 // dach dwuspadowy
-GableRoof::GableRoof() : Truss()
+GableRoof::GableRoof(Dimensions& dim) : Truss(dim)
 {
     setTrussType("Gable roof without purlins");
 }
 
+
 // dach dwuspadowy z p³atwi¹
-GableRoof::GableRoof(bool purl) : GableRoof()
+GableRoof::GableRoof(Dimensions& dim, bool purl) : GableRoof(dim)
 {
     setTrussType("Gable roof with purlins");
-    elements.push_back(new Purlin);
-    elements.push_back(new PurlinProp);
-}
-
-
-void Truss::setTrussType(std::string type)
-{
-    trussType = type;
-}
-
-
-const std::string& Truss::getTrussType() const 
-{
-    return trussType; 
+    elements.push_back(new Purlin(dim));
+    elements.push_back(new PurlinProp(dim));
 }

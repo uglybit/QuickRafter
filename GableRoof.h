@@ -6,8 +6,8 @@
 class GableRoof : public Truss
 {
 public:
-    GableRoof();
-    GableRoof(bool purl);
+    GableRoof(Dimensions& dim);
+    GableRoof(Dimensions& dim, bool purl);
 };
 
 #endif

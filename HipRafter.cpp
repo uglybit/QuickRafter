@@ -3,7 +3,7 @@
 using namespace std;
 
 
-HipRafter::HipRafter() : CommonRafter(int())
+HipRafter::HipRafter(Dimensions& dim) : CommonRafter(dim, int())
 {
     setName("Hip rafter");
     setParameters();
@@ -14,15 +14,15 @@ void HipRafter::setParameters()
 {
 #ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
     setWidth();
-    OvDim::setHipWidth(getWidth());
+    setDimensions()->setHipWidth(getWidth());
     setHeight();
-    OvDim::setHipHeight(getHeight());
+    setDimensions()->setHipHeight(getHeight());
 
 #else  // TEST - bez rêcznego wpisywania wartoœci
     setWidth(140);
     setHeight(220);
-    OvDim::setHipWidth(140);
-    OvDim::setHipHeight(220);
+    setDimensions()->setHipWidth(140);
+    setDimensions()->setHipHeight(220);
 #endif
 }
 
@@ -31,25 +31,25 @@ void HipRafter::setParameters()
 void HipRafter::calculateParameters()
 {
     // wymiar poziomy: po³owa d³ugoœci budynku - przek¹tna
-    double horizontal = sqrt(2) * (OvDim::getBuildingWidth() / 2);
+    double horizontal = sqrt(2) * (getDimensions()->getBuildingWidth() / 2);
 
     // wymiar pionowy: wysokoœæ od mur³aty + wysokosæ krokwi nad mur³at¹ do szczytu dachu
-    double vertical = OvDim::getTrussHeight() -
-        OvDim::getWallPlateHeight() -
-        OvDim::getRafterAboveWallPlat();
+    double vertical = getDimensions()->getTrussHeight() -
+        getDimensions()->getWallPlateHeight() -
+        getDimensions()->getRafterAboveWallPlat();
 
     // k¹t krokwi naro¿nej - zawsze mniejszy ni¿ zwyk³ej
     calculateAngles(vertical, horizontal);
 
     // pomocnicza pionowa lina na krokwi pod k¹tem
-    calculateVerticalLine(OvDim::getHipHeight());
+    calculateVerticalLine(getDimensions()->getHipHeight());
 
     // d³ugoœæ zaciêcia w pionie na zewnêtrznej powierzchni krokwi naro¿nej
-    double vertCut = getAngleVerticalLine() - OvDim::getRafterAboveWallPlat();
+    double vertCut = getAngleVerticalLine() - getDimensions()->getRafterAboveWallPlat();
     setVerticalCut(vertCut);
 
     // pomocnicza pozioma lina na krokwi pod k¹tem
-    calculateHorizontalLine(OvDim::getHipHeight());
+    calculateHorizontalLine(getDimensions()->getHipHeight());
 
     // d³ugoœc zaciêcia w poziomie na zewnêtrznej powierzchni krokwi naro¿nej
     calculateHorizontalCut();
@@ -69,7 +69,7 @@ void HipRafter::calculateParameters()
 void HipRafter::cutToSquare()
 {
     // w zaleznosci od szerokosci krokwi naroznej  wymiar zaciêcia bedzie sie zmieniac
-    double hipWidth = OvDim::getHipWidth();
+    double hipWidth = getDimensions()->getHipWidth();
     double correction = tan(degreesToRadians(getAlphaAngle())) * (0.5 * hipWidth);
 
     // zaciêcie w pionie
@@ -79,10 +79,10 @@ void HipRafter::cutToSquare()
     horizontalCutToSquare = verticalCutToSquare / tan(degreesToRadians(getAlphaAngle()));
 
     // wysokoœæ krokwi nad mur³at¹
-    setRafterAboveWallPlate(OvDim::getRafterAboveWallPlat());
+    setRafterAboveWallPlate(getDimensions()->getRafterAboveWallPlat());
 
     // dl³ugoœæ zaciêcia w poziomie: od powierzchni zewnêtrznej do osi krowki
-    angleCutToSquare = (0.5 * OvDim::getHipWidth()) * sqrt(2);
+    angleCutToSquare = (0.5 * getDimensions()->getHipWidth()) * sqrt(2);
 }
 
 
@@ -90,7 +90,7 @@ void HipRafter::cutToSquare()
 void HipRafter::addToEdges()
 {
     double cosValue = cos(degreesToRadians(getAlphaAngle()));
-    double rafterWidth = OvDim::getHipWidth();
+    double rafterWidth = getDimensions()->getHipWidth();
     setAdditionToEgdes((rafterWidth * 0.5) / cosValue);
 
     // wymiar na krawêdzich

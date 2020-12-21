@@ -4,13 +4,14 @@
 #include "Truss.h" 
 #include "GableRoof.h"
 #include "HippedRoof.h"
+#include "Dimensions.h"
 
 class Menu
 {
     Truss *truss = nullptr;
-    OverallDimensions *dimensions = nullptr;
+   // Dimensions *dimensions = nullptr;
 public:
-    Menu() {} 
+    Menu() = default;
     ~Menu();
 
     void show(); // pokazuje wszystkie elementy wiêŸby

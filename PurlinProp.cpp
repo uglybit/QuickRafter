@@ -2,7 +2,7 @@
 
 using namespace std;
 
-PurlinProp::PurlinProp()
+PurlinProp::PurlinProp(Dimensions& dim) : Element(dim)
 {
     setName("Purlin prop");
     setParameters();
@@ -24,15 +24,15 @@ void PurlinProp::setParameters() // override
     value = validateNumber<int>("Purlin prop quantity: ", 1, 10);
     setQuantity(value);
 
-    double getter = OvDim::getBuildingWidth();
+    double getter = getDimensions()->getBuildingWidth();
     value = validateNumber<double>("Purlin prop distance: ", 0.0, getter / 3);
-    OvDim::setPurlinPropDistance(value);
+    setDimensions()->setPurlinPropDistance(value);
 
 #else  // TEST - bez rêcznego wpisywania wartoœci
     setWidth(100);
     setHeight(100);
     setQuantity(8);
-    OvDim::setPurlinPropDistance(1800);
+    setDimensions()->setPurlinPropDistance(1800);
 #endif
 }
 
@@ -40,7 +40,7 @@ void PurlinProp::setParameters() // override
 void PurlinProp::showParameters()
 {
     cout << '\n';
-    setLength(OvDim::getPurlinPropLength());
+    setLength(getDimensions()->getPurlinPropLength());
     showDimensions();
     cout << "\n\t\tquantity: " << getQuantity() << endl;
 }

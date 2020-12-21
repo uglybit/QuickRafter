@@ -3,6 +3,18 @@
 using namespace std;
 
 
+Element::Element(Dimensions& dim) : dimension{dim}
+{
+
+}
+
+
+const Dimensions* Element::getDimensions()
+{
+    return &dimension;
+}
+
+
 void Element::setWidth() // ustawienie szerokoœci elementu
 {
     double tmpValue;

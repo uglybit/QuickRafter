@@ -1,20 +1,13 @@
 #include <iostream>
 #include "Menu.h"
-//#include <conio.h>
-//#include <stdio.h>
 #include <stdlib.h>
-#include <crtdbg.h> // w Visual Studio - sprawdzenie wycieków pamiêci
 
 using namespace std;
 
 int main()
 {
-    { // zakres w celu wykrycia wycieków pamiêci 
-        Menu menu;
-        menu.show();
-    } 
-    
-    _CrtDumpMemoryLeaks(); // w Visual Studio - sprawdzenie wycieków pamiêci
+    Menu menu;
+    menu.show();
     
     return 0;
 }

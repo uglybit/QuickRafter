@@ -6,7 +6,7 @@
 #include <iomanip>
 
 //#define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartoœci
-                // zostan¹ u¿yte wartoœci domyœlne */
+                // zostan¹ u¿yte wartoœci domyœlne */ wyrzuciæ to st¹d
 
 bool dataValidation(std::string info);
 std::ostream& manip(std::ostream&);

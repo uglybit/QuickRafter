@@ -1,6 +1,5 @@
 #include "Purlin.h"
 
-using namespace std;
 
 Purlin::Purlin(Dimensions& dim) : Element(dim)
 {

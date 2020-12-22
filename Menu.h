@@ -9,13 +9,11 @@
 class Menu
 {
     Truss *truss = nullptr;
-   // Dimensions *dimensions = nullptr;
 public:
     Menu() = default;
     ~Menu();
 
-    void show(); // pokazuje wszystkie elementy wiêŸby
-
+    void show();
 };
 
 #endif // MENU_H

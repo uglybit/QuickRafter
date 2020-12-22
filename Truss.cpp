@@ -46,30 +46,30 @@ void Truss::show()
         a->showParameters();
     }
 
-    cout << "\nCommon rafters distance: "
-       << getDimensions()->getCommonRaftersDistance() << endl;
+    std::cout << "\nCommon rafters distance: "
+       << getDimensions()->getCommonRaftersDistance();
 
-    cout << "Roof surface area: " <<  manip
-         << calcArea() << " m2" << endl;
+    std::cout << "\nRoof surface area: " <<  manip
+         << calcArea() << " m2" << std::endl;
 }
 
 
 // pobranie parametrów 
 void Truss::getInitialDimensions()
 {
-    cout << "\n\t! ALL VALUES IN MILIMETERS !\n" << endl;
-    cout << "Initial dimensions: \n";
-    cout << "\tBuliding length: " << getDimensions()->getBuildingLength() << endl;
-    cout << "\tBuliding width: " << getDimensions()->getBuildingWidth() << endl;
-    cout << "\tTruss height: " << getDimensions()->getTrussHeight() << endl;
-    cout << "\tTruss length: " << getDimensions()->getTrussLength() << endl;
-    cout << "\tWall plate level: " << getDimensions()->getWallPlateHeight() << endl;
-    cout << "\tPurlin prop distance: " << getDimensions()->getPurlinPropDistance() << endl;
-    cout << "\tHorizontal eave length: " << getDimensions()->getHorizontalEaveLength() << endl;
-    cout << "\tCommon rafter height: " << getDimensions()->getCommonRafterHeight() << endl;
-    cout << "\tCommon rafter width: " << getDimensions()->getCommonRafterWidth() << endl;
-    cout << "\tHip rafter height: " << getDimensions()->getHipHeight() << endl;
-    cout << "\tHip rafter width: " << getDimensions()->getHipWidth() << endl;
+    std::cout << "\n\t! ALL VALUES IN MILIMETERS !\n\n";
+    std::cout << "Initial dimensions: \n";
+    std::cout << "\n\tBuliding length: " << getDimensions()->getBuildingLength();
+    std::cout << "\n\tBuliding width: " << getDimensions()->getBuildingWidth();
+    std::cout << "\n\tTruss height: " << getDimensions()->getTrussHeight();
+    std::cout << "\n\tTruss length: " << getDimensions()->getTrussLength();
+    std::cout << "\n\tWall plate level: " << getDimensions()->getWallPlateHeight();
+    std::cout << "\n\tPurlin prop distance: " << getDimensions()->getPurlinPropDistance();
+    std::cout << "\n\tHorizontal eave length: " << getDimensions()->getHorizontalEaveLength();
+    std::cout << "\n\tCommon rafter height: " << getDimensions()->getCommonRafterHeight();
+    std::cout << "\n\tCommon rafter width: " << getDimensions()->getCommonRafterWidth();
+    std::cout << "\n\tHip rafter height: " << getDimensions()->getHipHeight();
+    std::cout << "\n\tHip rafter width: " << getDimensions()->getHipWidth() << std::endl;
 }
 
 
@@ -90,11 +90,11 @@ double Truss::calcCommonRaftersDistance() // override
 //oblicznie powierzchni dachu
 double Truss::calcArea() // override
 {
-    double h = getDimensions()->getCommRaftTotalLength();
+    double height = getDimensions()->getCommRaftTotalLength();
 
-    double w = getDimensions()->getTrussLength();
-    surfaceArea = h*w*2;
-    surfaceArea /= 1000000; // result in m^2
+    double width = getDimensions()->getTrussLength();
+    surfaceArea = height * width * 2;
+    surfaceArea /= 1000000; // rezultat w m^2
     return surfaceArea;
 }
 

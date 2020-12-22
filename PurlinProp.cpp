@@ -1,6 +1,5 @@
 #include "PurlinProp.h"
 
-using namespace std;
 
 PurlinProp::PurlinProp(Dimensions& dim) : Element(dim)
 {
@@ -39,8 +38,8 @@ void PurlinProp::setParameters() // override
 
 void PurlinProp::showParameters()
 {
-    cout << '\n';
     setLength(getDimensions()->getPurlinPropLength());
+    std::cout << '\n';
     showDimensions();
-    cout << "\n\t\tquantity: " << getQuantity() << endl;
+    std::cout << "\n\t\tquantity: " << getQuantity() << std::endl;
 }

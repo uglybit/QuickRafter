@@ -1,7 +1,5 @@
 #include "HipRafter.h"
 
-using namespace std;
-
 
 HipRafter::HipRafter(Dimensions& dim) : CommonRafter(dim, int())
 {
@@ -109,7 +107,7 @@ void HipRafter::showParameters() // override
 void HipRafter::showHipParameters() const
 {
     //showDimensions();
-    cout << "\n\t-vertical Cut To Square: " << verticalCutToSquare << endl;
-    cout << "\t-horizontal Cut To Square: " << horizontalCutToSquare << endl;
-    cout << "\t-angle Cut To Square: " << angleCutToSquare << endl;
+    std::cout << "\n\t-vertical Cut To Square: " << verticalCutToSquare << "\n";
+    std::cout << "\t-horizontal Cut To Square: " << horizontalCutToSquare << "\n";
+    std::cout << "\t-angle Cut To Square: " << angleCutToSquare << std::endl;
 }

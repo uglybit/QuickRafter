@@ -2,28 +2,25 @@
 
 using namespace std;
 
-Menu::~Menu() { // destrukor
+Menu::~Menu() { 
 if (truss != nullptr)
     delete truss;
-//if (dimensions != nullptr)
-  //  delete dimensions;
 }
 
 
-// pokazuje g³ówne menu
 void Menu::show()
 {
-    cout << "\n\t* QuickRafter *\n\n"
-         << "1. Gable roof without purlins\n"
-         << "2. Gable roof with purlins\n"
-         << "3. Hipped roof without purlins\n"
-         << "4. Hipped roof with purlins\n" 
-         << endl;
-
+    std::cout << "\n\t* QuickRafter *\n\n";
+    std::cout << "1. Gable roof without purlins\n";
+    std::cout << "2. Gable roof with purlins\n";
+    std::cout << "3. Hipped roof without purlins\n";
+    std::cout << "4. Hipped roof with purlins\n" << std::endl;
+   
+    // w kostruktorze uzytkownik dostaje instrukcje i wpisuje wartosci
+    Dimensions dimensions; 
+    
     auto choice = validateNumber("Choose option 1-4: ", 1, 4);
 
-    Dimensions dimensions;
-    
     switch(choice)
     {
         case 1: truss = new GableRoof(dimensions); break;
@@ -32,7 +29,7 @@ void Menu::show()
         case 4: truss = new HippedRoof(dimensions, true); break;
     }
 
-    cout << truss->getTrussType() << endl; // informacja o typie dachu
-    truss->calcParam(); // oblicznie parametrów
-    truss->show(); // wyœwielenie obliczeñ
+    cout << truss->getTrussType() << endl; 
+    truss->calcParam(); 
+    truss->show(); 
 }

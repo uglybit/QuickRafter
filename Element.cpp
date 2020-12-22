@@ -1,7 +1,5 @@
 #include "Element.h"
 
-using namespace std;
-
 
 Element::Element( Dimensions& dim) : dimensions{dim}
 {
@@ -18,7 +16,7 @@ const Dimensions* Element::getDimensions() const
 void Element::setWidth() // ustawienie szerokoœci elementu
 {
     double tmpValue;
-    cout << name;
+    std::cout << name;
     tmpValue = validateNumber("\twidth:  ", 10.0, 500.0);
     width = tmpValue; 
 }
@@ -35,7 +33,7 @@ void Element::setHeight(double value) // TESTY!
 
 void Element::setHeight() // ustawienie wysokoœci elementu
 {
-    cout << name;
+    std::cout << name;
     height = validateNumber("\theight:  ", 10.0, 500.0);
 }
 
@@ -43,7 +41,7 @@ void Element::setHeight() // ustawienie wysokoœci elementu
 // wyœwietlenie wymiarów
 void Element::showDimensions() const
 {
-    cout << '\n' << name <<  "\n\t(width/height/length): "
+    std::cout << '\n' << name <<  "\n\t(width/height/length): "
          << width << "/" << height << "/" << length;
 }
 

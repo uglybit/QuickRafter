@@ -15,9 +15,22 @@ CommonRafter::CommonRafter(Dimensions& dim, int count) : Element(dim)  // tego k
 }
 
 
-void CommonRafter::setParameters() // override
+ElementType CommonRafter::type() const { 
+    return ElementType::CommonRafter; 
+}
+
+
+void CommonRafter::setParameters() 
 {
-#ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
+#if defined TEST // TEST - bez rêcznego wpisywania wartoœci
+    setHeight(180);
+    setWidth(90);
+    setDimensions()->setCommonRafterHeight(getHeight());
+    setDimensions()->setCommonRafterWidth(getWidth());
+    setDimensions()->setCommonRafterDistance(800);
+    horizontalEaveLength = getDimensions()->getHorizontalEaveLength();
+
+#else  
     double value;
     setWidth();
     setDimensions()->setCommonRafterWidth(getWidth());
@@ -25,14 +38,6 @@ void CommonRafter::setParameters() // override
     setDimensions()->setCommonRafterHeight(getHeight());
     value = validateNumber("Approximate distance between common rafters: ", 100.0, 3000.0);
     setDimensions()->setCommonRafterDistance(value);
-    horizontalEaveLength = getDimensions()->getHorizontalEaveLength();
-
-#else  // TEST - bez rêcznego wpisywania wartoœci
-    setHeight(180);
-    setWidth(90);
-    setDimensions()->setCommonRafterHeight(getHeight());
-    setDimensions()->setCommonRafterWidth(getWidth());
-    setDimensions()->setCommonRafterDistance(800);
     horizontalEaveLength = getDimensions()->getHorizontalEaveLength();
 #endif
 }
@@ -159,7 +164,7 @@ void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaæ dla dac
         setDimensions()->setHipRaftTotalLength(rafterTotalLength);
     }
 
-#ifdef TEST // w celach testowych - wypisanie obliczanych wartoœci na bie¿¹co
+#if defined TEST // w celach testowych - wypisanie obliczanych wartoœci na bie¿¹co
     std::cout << "Section length: eave - wall plate " << eaveToWallPlate << "\n";
     std::cout << "Section length:  wall plate - purlin: " << wallPlateToPurlin << "\n";
     std::cout << "Section length: purlin - top: " << purlinToTop << "\n";
@@ -197,4 +202,135 @@ void CommonRafter::showParameters() // override
     std::cout << "\t-wall Plate To Top: " << wallPlateToTop << "\n";
     std::cout << "\t-rafter Total Length: " << rafterTotalLength << std::endl;
 
+}
+
+void CommonRafter::setVerticalCut(const double vCut)
+{ 
+    verticalCut = vCut; 
+}
+
+
+void CommonRafter::setHorizontalCut(const double hCut)
+{ 
+    horizontalCut = hCut; 
+}
+
+
+void CommonRafter::setRafterAboveWallPlate(const double rafAbove) 
+{ 
+    rafterAboveWallPlat = rafAbove; 
+}
+
+
+void CommonRafter::setAngleVerticalLine(const double angVert) 
+{ 
+    angleVerticalLine = angVert;
+}
+
+
+void CommonRafter::setAngleHorizontalLine(const double angHor)
+{
+    angleHorizontalLine = angHor; 
+}
+
+
+void CommonRafter::setHorizontalEaveLength(const double horEave)
+{
+    horizontalEaveLength = horEave; 
+}
+
+
+void CommonRafter::setEaveToWallPlate(const double eaveWall) 
+{
+    eaveToWallPlate = eaveWall; 
+}
+
+
+void CommonRafter::setWallPlateToPurlin(const double wallPurl) 
+{ 
+    wallPlateToPurlin = wallPurl; 
+}
+
+
+void CommonRafter::setPurlinToTop(const double purlTop)
+{
+    purlinToTop = purlTop;
+}
+
+
+void CommonRafter::setWallPlateToTop(const double wallTop)
+{ 
+    wallPlateToTop = wallTop;
+}
+
+
+void CommonRafter::setRafterTotalLength(const double rafterTotal)
+{ 
+    rafterTotalLength = rafterTotal;
+}
+
+// get
+double CommonRafter::getVerticalCut() const 
+{ 
+    return verticalCut;
+}
+
+
+double CommonRafter::getHorizontalCut() const
+{
+    return  horizontalCut; 
+}
+
+
+double CommonRafter::getRafterAboveWallPlate() const 
+{ 
+    return rafterAboveWallPlat;
+}
+
+
+double CommonRafter::getAngleVerticalLine() const
+{
+    return angleVerticalLine; 
+}
+
+
+double CommonRafter::getAngleHorizontalLine() const
+{ 
+    return angleHorizontalLine; 
+}
+
+
+double CommonRafter::getHorizontalEaveLength() const
+{ 
+    return horizontalEaveLength;
+}
+
+
+double CommonRafter::getEaveToWallPlate() const 
+{ 
+    return eaveToWallPlate; 
+}
+
+
+double CommonRafter::getWallPlateToPurlin() const 
+{ 
+    return wallPlateToPurlin;
+}
+
+
+double CommonRafter::getPurlinToTop() const 
+{ 
+    return purlinToTop;
+}
+
+
+double CommonRafter::getwallPlateToTop() const
+{ 
+    return wallPlateToTop; 
+}
+
+
+double CommonRafter::getRafterTotalLength() const 
+{ 
+    return rafterTotalLength; 
 }

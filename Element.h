@@ -5,7 +5,7 @@
 #include <cmath> 
 #include <iostream>
 
-// do rozpoznawania typu klasy dziedzicz¹cej po Element*
+// do rozpoznawania typu klasy dziedziczacej po Element*
 enum class ElementType {
     Element,
     CommonRafter,
@@ -21,61 +21,57 @@ enum class ElementType {
 class Element
 {
 private:
-    // konwersja radiany - stopnie i odwrotnie
+    // przelicznik do konwersji radiany <--> stopnie
     static constexpr  double convRadtoDeg = 180 / 3.141592653589;
     static constexpr  double convDegToRad = 3.141592653589 / 180;
 
-    // nazwa i wymiary elementu
     std::string name; 
     double length{ 0.0 };
     double width{ 0.0 };
     double height{ 0.0 }; 
-    int quantity{ 0 }; // iloœæ
+    int quantity{ 0 };
         
-    double alphaAngle{ 0.0 }; // k¹t dachu wzgêldem poziomu  
-    double betaAngle{ 0.0 }; // 90 - alphAangle: k¹t dachu wzglêdem pionu
+    double alphaAngle{ 0.0 }; // k¹t nachylenia dachu wzgeldem poziomu  
+    double betaAngle{ 0.0 }; //  k¹t nachylenia dachu wzgledem pionu
     Dimensions& dimensions;
 
 public:
     Element(Dimensions& dim);
     virtual ~Element() = default;
 
-    // do sprawdzenia typu elementu
-    virtual ElementType type() const { return ElementType::Element; }
-   
+    virtual ElementType type() const;
     virtual void calculateParameters() = 0;
-    virtual void showParameters() { std::cout << name; }
+    virtual void showParameters() = 0;
 
-    void setName(const std::string& n)
-    {
-        name = n;
-    }
-    // ustawienie wymiarów   
+    const Dimensions* getDimensions() const;
+    Dimensions* setDimensions();
+
+    void setName(const std::string& n);
     void setWidth();
     void setHeight(); 
-    void setLength(double value) { length = value; }
-    void setQuantity(int value) { quantity = value; }
+    void setLength(double value);
+    void setQuantity(int value);
 
-    // do obliczeñ k¹tów
+    // do obliczen katow
     double radiansToDegrees(double value);
     double degreesToRadians(double value); 
     void calculateAngles(double vertical, double horizontal); 
     void showDimensions() const; 
 
     // get
-    double getWidth() const { return width;  }
-    double getHeight() const { return height;  }
-    double getAlphaAngle() const { return alphaAngle; }
-    double getBetaAngle() const { return betaAngle; }
-    double getQuantity() const { return quantity; }
-    const std::string& getName() const { return name; }
+    double getWidth() const;
+    double getHeight() const;
+    double getAlphaAngle() const;
+    double getBetaAngle() const;
+    double getQuantity() const;
+    const std::string& getName() const;
 
 
-    /* TESTY */
-    void setHeight(double value); // TESTY!
+#if defined TEST
+    void setHeight(double value); 
     void setWidth(double value); 
-    const Dimensions* getDimensions() const ;
-    Dimensions* setDimensions() { return &dimensions;  }
+#endif
+    
 };
 
 

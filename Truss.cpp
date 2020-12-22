@@ -1,6 +1,5 @@
 #include "Truss.h"
 
-using namespace std;
 
 Truss::Truss(Dimensions& dim) : dimension{ dim }
 {
@@ -10,18 +9,25 @@ Truss::Truss(Dimensions& dim) : dimension{ dim }
 }
 
 
+Truss::~Truss()
+{
+    for (auto a : elements) {
+        if (a != nullptr) {
+            delete a;
+        }
+    }
+}
+
+
 const Dimensions* Truss::getDimensions() const
 {
     return &dimension;
 }
 
 
-Truss::~Truss()
+Dimensions* Truss::setDimensions()
 {
-    for (auto a : elements) {
-        if (a != nullptr)
-            delete a;
-    }
+    return &dimension; 
 }
 
 
@@ -54,8 +60,7 @@ void Truss::show()
 }
 
 
-// pobranie parametrów 
-void Truss::getInitialDimensions()
+void Truss::getInitialDimensions() const
 {
     std::cout << "\n\t! ALL VALUES IN MILIMETERS !\n\n";
     std::cout << "Initial dimensions: \n";
@@ -74,27 +79,26 @@ void Truss::getInitialDimensions()
 
 
 // obliczenie odleg³oœci miêdzy krokwiami
-double Truss::calcCommonRaftersDistance() // override
+double Truss::calcCommonRaftersDistance() 
 {
     double trussLength = getDimensions()->getTrussLength();
     int numberOfRafters = trussLength /
         (getDimensions()->getCommonRafterWidth() +
             getDimensions()->getCommonRaftersDistance());
-    numberOfRafters += 1; // liczba krokwi
-    double rafterDistance = (trussLength / numberOfRafters); // odleglosc miedzy krokwiami
+    numberOfRafters += 1; 
+    double rafterDistance = (trussLength / numberOfRafters); 
     setDimensions()->setCommonRafterDistance(rafterDistance);
     return rafterDistance;
 }
 
 
 //oblicznie powierzchni dachu
-double Truss::calcArea() // override
+double Truss::calcArea()
 {
     double height = getDimensions()->getCommRaftTotalLength();
-
     double width = getDimensions()->getTrussLength();
     surfaceArea = height * width * 2;
-    surfaceArea /= 1000000; // rezultat w m^2
+    surfaceArea /= 1000000; // przeliczenie na m^2
     return surfaceArea;
 }
 

@@ -1,15 +1,33 @@
 #include "Element.h"
 
 
-Element::Element( Dimensions& dim) : dimensions{dim}
+Element::Element(Dimensions& dim) : dimensions{dim}
 {
 
+}
+
+
+ElementType Element::type() const 
+{
+    return ElementType::Element;
 }
 
 
 const Dimensions* Element::getDimensions() const
 {
     return &dimensions;
+}
+
+
+Dimensions* Element::setDimensions()
+{
+    return &dimensions; 
+}
+
+
+void Element::setName(const std::string& n) 
+{
+    name = n;
 }
 
 
@@ -21,14 +39,18 @@ void Element::setWidth() // ustawienie szerokoœci elementu
     width = tmpValue; 
 }
 
-void Element::setWidth(double value) // TESTY!
+
+#if defined TEST
+void Element::setWidth(double value)
 {
     width = value;
 }
-void Element::setHeight(double value) // TESTY!
+
+void Element::setHeight(double value) 
 {
     height = value;
 }
+#endif
 
 
 void Element::setHeight() // ustawienie wysokoœci elementu
@@ -38,7 +60,18 @@ void Element::setHeight() // ustawienie wysokoœci elementu
 }
 
 
-// wyœwietlenie wymiarów
+void Element::setLength(double value) 
+{
+    length = value; 
+}
+
+
+void Element::setQuantity(int value)
+{
+    quantity = value;
+}
+
+
 void Element::showDimensions() const
 {
     std::cout << '\n' << name <<  "\n\t(width/height/length): "
@@ -46,14 +79,12 @@ void Element::showDimensions() const
 }
 
 
-// konwersja radiany -> stopnie
 double Element::radiansToDegrees(double value) 
 {
     return value *= convRadtoDeg;
 }
 
 
-// konwersja stopnie -> radiany
 double Element::degreesToRadians(double value)
 {
     return value *= convDegToRad;
@@ -68,3 +99,38 @@ void Element::calculateAngles(double vertical, double horizontal)
     betaAngle = 90 - alphaAngle;
 }
 
+
+double Element::getWidth() const
+{ 
+    return width; 
+}
+
+
+double Element::getHeight() const 
+{
+    return height; 
+}
+
+
+double Element::getAlphaAngle() const 
+{ 
+    return alphaAngle;
+}
+
+
+double Element::getBetaAngle() const 
+{
+    return betaAngle; 
+}
+
+
+double Element::getQuantity() const
+{ 
+    return quantity; 
+}
+
+
+const std::string& Element::getName() const 
+{ 
+    return name;
+}

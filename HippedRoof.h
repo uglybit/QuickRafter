@@ -11,6 +11,6 @@ public:
     explicit HippedRoof(Dimensions& dim, bool purl);
 };
 
-#endif // !HIPPED_ROOF
+#endif 
 
 

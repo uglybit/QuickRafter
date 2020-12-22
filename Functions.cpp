@@ -2,15 +2,12 @@
 #include <iomanip>
 
 
-
 bool dataValidation(const std::string& info)
 {
-    if (std::cin.fail())
-    {
+    if (std::cin.fail()) {
         std::cin.clear();
         std::cin.ignore(10, '\n');
         std::cout << info;
-        // require_enter();
         return true;
     }
     else {
@@ -19,7 +16,8 @@ bool dataValidation(const std::string& info)
 }
 
 
-std::ostream& manip(std::ostream& o) // formatowanie wypisywania liczb
+// formatowanie wypisywania liczb
+std::ostream& manip(std::ostream& o) 
 {
     o << std::fixed << std::setprecision(0);
     return o;

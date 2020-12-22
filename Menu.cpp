@@ -1,6 +1,5 @@
 #include "Menu.h"
 
-using namespace std;
 
 Menu::~Menu() { 
 if (truss != nullptr)
@@ -16,7 +15,7 @@ void Menu::show()
     std::cout << "3. Hipped roof without purlins\n";
     std::cout << "4. Hipped roof with purlins\n" << std::endl;
    
-    // w kostruktorze uzytkownik dostaje instrukcje i wpisuje wartosci
+    // w kostruktorze Dimenion() uzytkownik dostaje instrukcje i wpisuje wartosci
     Dimensions dimensions; 
     
     auto choice = validateNumber("Choose option 1-4: ", 1, 4);
@@ -29,7 +28,7 @@ void Menu::show()
         case 4: truss = new HippedRoof(dimensions, true); break;
     }
 
-    cout << truss->getTrussType() << endl; 
+    std::cout << truss->getTrussType() << "\n"; 
     truss->calcParam(); 
     truss->show(); 
 }

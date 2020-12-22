@@ -6,20 +6,21 @@ WallPlate::WallPlate(Dimensions& dim) : Element(dim)
     setParameters();
 }
 
+
 ElementType WallPlate::type() const
 { 
     return ElementType::WallPlate;
 }
 
+
 void WallPlate::setParameters() // override
 {
-#ifndef TEST // wersja nie-testowa, podawanie wszystkich wartoœci przez u¿ytkownika
-    setWidth();
-    setHeight();
-
-#else // TEST - bez rêcznego wpisywania wartoœci
+#if defined TEST // TEST - bez rêcznego wpisywania wartoœci
     setWidth(140);
     setHeight(140);
+#else 
+    setWidth();
+    setHeight();
 #endif
 }
 

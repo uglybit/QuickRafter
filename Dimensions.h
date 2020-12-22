@@ -6,7 +6,7 @@
 #include <iomanip>
 #include "Functions.h"
 
-#define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartoœci
+#define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartosci
 
 // klasa wymiary ogolne
 class Dimensions 
@@ -56,27 +56,27 @@ public:
     void setPurlinPropDistance(double value); 
     void setCommonRafterHeight(double value); 
     void setCommonRafterWidth(double value); 
-    void setCommonRafterDistance(double value) {commonRaftersDistance = value; } 
+    void setCommonRafterDistance(double value);
 
     // wartoœci obliczane przez program
-    void setPurlinPropLength(double value); // slupek
-    void setPurlinLevel(double value); // platew
+    void setPurlinPropLength(double value); 
+    void setPurlinLevel(double value); 
     void setPurlinDimensions(double value); 
-    void setCommRaftTotalLength(double value) { commRaftTotalLength = value; } // krokiew
-    void setHipWidth(double value); // krokiew narozna
+    void setCommRaftTotalLength(double value);
+    void setHipWidth(double value); 
     void setHipHeight(double value);
-    void setHipRaftTotalLength(double len) {hipRaftTotalLength = len; }
-    void setRafterAboveWallPlat(double value); // obliczenia pomocnicze
+    void setHipRaftTotalLength(double len);
+    void setRafterAboveWallPlat(double value); 
 
      // get
     bool isPurlin() const;
     double getPurlinPropLength() const;
     double getPurlinLevel() const;
     double getPurlinDimensions() const;
-    double getCommRaftTotalLength() const { return commRaftTotalLength; }
+    double getCommRaftTotalLength() const;
     double getHipWidth() const;
     double getHipHeight() const;
-    double getHipRaftTotalLength() const { return hipRaftTotalLength; }
+    double getHipRaftTotalLength() const;
     double getRafterAboveWallPlat() const;
     double getBuildingLength() const;
     double getBuildingWidth() const;

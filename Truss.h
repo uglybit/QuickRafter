@@ -27,10 +27,10 @@ public:
     double calcArea();
     void calcParam();
     void show();
-    void getInitialDimensions();
+    void getInitialDimensions() const;
     double calcCommonRaftersDistance();
     const Dimensions* getDimensions() const ;
     Dimensions* setDimensions() { return &dimension; }
 };
 
-#endif // TRUSS_H
+#endif 

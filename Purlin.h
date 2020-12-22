@@ -9,10 +9,10 @@ class Purlin final: public Element
 public:
     explicit Purlin(Dimensions& dim);
 
-    ElementType type() const override;
-    void calculateParameters() override;
+    ElementType type() const override final;
+    void calculateParameters() override final;
     void setParameters();
-    void showParameters() override;
+    void showParameters() override final;
 };
 
-#endif // PURLIN_H
+#endif 

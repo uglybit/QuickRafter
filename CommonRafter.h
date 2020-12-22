@@ -34,7 +34,7 @@ public:
     ElementType type() const override { return ElementType::CommonRafter; }
 
     //calculating
-    void setParameters() override;
+    void setParameters();
     void calculateParameters() override;
     void calculateVerticalLine(double value);
     void calculateVerticalCut();

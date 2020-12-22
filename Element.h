@@ -44,7 +44,6 @@ public:
     virtual ElementType type() const { return ElementType::Element; }
    
     virtual void calculateParameters() = 0;
-    virtual void setParameters() = 0;
     virtual void showParameters() { std::cout << name; }
 
     void setName(const std::string& n)

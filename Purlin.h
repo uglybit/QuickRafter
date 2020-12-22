@@ -11,7 +11,7 @@ public:
 
     ElementType type() const override;
     void calculateParameters() override;
-    void setParameters() override;
+    void setParameters();
     void showParameters() override;
 };
 

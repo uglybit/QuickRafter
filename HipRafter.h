@@ -17,7 +17,7 @@ private:
 public:
     explicit HipRafter(Dimensions& dim);
     ElementType type() const override { return ElementType::HipRafter; }
-    void setParameters() override;
+    void setParameters();
     void showParameters() override;
     void calculateParameters() override;
 

@@ -10,7 +10,7 @@ public:
     explicit PurlinProp(Dimensions& dim);
 
     ElementType type() const override;
-    void setParameters() override;
+    void setParameters(); 
     void showParameters() override;
 
     // parametry s³upka musz¹ zostaæ obliczone w CommonRafter

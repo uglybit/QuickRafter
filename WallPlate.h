@@ -10,7 +10,7 @@ public:
     explicit WallPlate(Dimensions& dim);
 
     ElementType type() const override;
-    void setParameters() override;
+    void setParameters();
     void calculateParameters() override;
     void showParameters() override;
 };

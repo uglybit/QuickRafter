@@ -30,7 +30,7 @@ public:
     void getInitialDimensions() const;
     double calcCommonRaftersDistance();
     const Dimensions* getDimensions() const ;
-    Dimensions* setDimensions() { return &dimension; }
+    Dimensions* setDimensions();
 };
 
 #endif 

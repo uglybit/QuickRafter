@@ -1,6 +1,5 @@
 #include "CommonRafter.h"
 
-using namespace std;
 
 CommonRafter::CommonRafter(Dimensions& dim) : Element(dim)
 {
@@ -161,12 +160,12 @@ void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaæ dla dac
     }
 
 #ifdef TEST // w celach testowych - wypisanie obliczanych wartoœci na bie¿¹co
-    cout << "Section length: eave - wall plate " << eaveToWallPlate << endl;
-    cout << "Section length:  wall plate - purlin: " << wallPlateToPurlin << endl;
-    cout << "Section length: purlin - top: " << purlinToTop << endl;
-    cout << "Section length: wall plate - top:  " << wallPlateToTop << endl;
-    cout << "Rafter total length: " << rafterTotalLength << endl;
-    cout << "Horizontal eave length : " << horizontalEaveLength << endl;
+    std::cout << "Section length: eave - wall plate " << eaveToWallPlate << "\n";
+    std::cout << "Section length:  wall plate - purlin: " << wallPlateToPurlin << "\n";
+    std::cout << "Section length: purlin - top: " << purlinToTop << "\n";
+    std::cout << "Section length: wall plate - top:  " << wallPlateToTop << "\n";
+    std::cout << "Rafter total length: " << rafterTotalLength << "\n";
+    std::cout << "Horizontal eave length : " << horizontalEaveLength << std::endl;
 #endif
 }
 
@@ -175,27 +174,27 @@ void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaæ dla dac
 void CommonRafter::showParameters() // override
 {
 //    showDimensions();
-    cout << "\n\n" << getName() << " parameters:"  << endl;
-    cout << manip; // output format for values
-    cout << "\t-rafter Above WallPlat: " << rafterAboveWallPlat << endl;
-    cout << "\t-angle Vertical Line: " << angleVerticalLine << endl;
-    cout << "\t-angle Horizontal Line: " << angleHorizontalLine << endl;
-    cout << "\t-horizontal Eave Length: " << horizontalEaveLength << endl;
-    cout << setprecision(2);
-    cout << "\t-alpha angle: " << getAlphaAngle() << endl;
-    cout << "\t-beta angle " << getBetaAngle() << endl;
-    cout << manip; 
-    cout << "\t-vertical Cut: " << verticalCut << endl;
-    cout << "\t-horizontal Cut: " << horizontalCut << endl;
+    std::cout << "\n\n" << getName() << " parameters:"  << "\n";
+    std::cout << manip; // output format for values
+    std::cout << "\t-rafter Above WallPlat: " << rafterAboveWallPlat << "\n";
+    std::cout << "\t-angle Vertical Line: " << angleVerticalLine << "\n";
+    std::cout << "\t-angle Horizontal Line: " << angleHorizontalLine << "\n";
+    std::cout << "\t-horizontal Eave Length: " << horizontalEaveLength << "\n";
+    std::cout << std::setprecision(2);
+    std::cout << "\t-alpha angle: " << getAlphaAngle() << "\n";
+    std::cout << "\t-beta angle " << getBetaAngle() << "\n";
+    std::cout << manip;
+    std::cout << "\t-vertical Cut: " << verticalCut << "\n";
+    std::cout << "\t-horizontal Cut: " << horizontalCut << "\n";
 
-    cout << '\n' << getName() << " dimensions:" << endl;
-    cout << "\t-eave To Wall Platt: " << eaveToWallPlate << endl;
+    std::cout << '\n' << getName() << " dimensions:" << "\n";
+    std::cout << "\t-eave To Wall Platt: " << eaveToWallPlate << "\n";
 
     if (getDimensions()->isPurlin() == true) {
-        cout << "\t-wall Plate To Purlin: " << wallPlateToPurlin << endl;
-        cout << "\t-purlin To Top: " << purlinToTop << endl;
+        std::cout << "\t-wall Plate To Purlin: " << wallPlateToPurlin << "\n";
+        std::cout << "\t-purlin To Top: " << purlinToTop << "\n";
     }
-    cout << "\t-wall Plate To Top: " << wallPlateToTop << endl;
-    cout << "\t-rafter Total Length: " << rafterTotalLength << endl;
+    std::cout << "\t-wall Plate To Top: " << wallPlateToTop << "\n";
+    std::cout << "\t-rafter Total Length: " << rafterTotalLength << std::endl;
 
 }

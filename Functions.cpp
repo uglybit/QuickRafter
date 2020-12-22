@@ -1,16 +1,15 @@
 #include "Functions.h"
 #include <iomanip>
 
-using namespace std;
 
 
-bool dataValidation(const string& info)
+bool dataValidation(const std::string& info)
 {
-    if (cin.fail())
+    if (std::cin.fail())
     {
-        cin.clear();
-        cin.ignore(10, '\n');
-        cout << info;
+        std::cin.clear();
+        std::cin.ignore(10, '\n');
+        std::cout << info;
         // require_enter();
         return true;
     }
@@ -20,9 +19,9 @@ bool dataValidation(const string& info)
 }
 
 
-ostream& manip(ostream& o) // formatowanie wypisywania liczb
+std::ostream& manip(std::ostream& o) // formatowanie wypisywania liczb
 {
-    o << fixed << setprecision(0);
+    o << std::fixed << std::setprecision(0);
     return o;
 }
 

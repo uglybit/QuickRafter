@@ -8,7 +8,7 @@ class CommonRafter : public Element
 {
 private:
     double verticalCut{ 0.0 }; // długość zacięcia w pionie (zewnętrzny wymiar)
-    double horizontalCut; // długość zacięcia w poziomie (zewnętrzny wymiar)
+    double horizontalCut{ 0.0 }; // długość zacięcia w poziomie (zewnętrzny wymiar)
 
     // zmienne pomocnicze
     double rafterAboveWallPlat{ 0.0 }; // wysokość krokwi nad murłatą

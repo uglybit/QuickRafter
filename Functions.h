@@ -4,15 +4,15 @@
 #include <string>
 
 
-bool dataValidation(std::string info);
+bool dataValidation(const std::string& info);
 std::ostream& manip(std::ostream&);
 
 
 
 // walidacja danych wejœciowych - liczba
 template<typename T>
-T validateNumber(std::string request, T range_low, T range_high,
-    std::string info_bad_data = "This is not propper value")
+T validateNumber(const std::string& request, const T range_low, const T range_high,
+    const std::string& info_bad_data = "This is not propper value")
 {
     T n;
     do

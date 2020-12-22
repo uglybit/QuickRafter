@@ -61,7 +61,7 @@ public:
     double radiansToDegrees(double value);
     double degreesToRadians(double value); 
     void calculateAngles(double vertical, double horizontal); 
-    void showDimensions(); 
+    void showDimensions() const; 
 
     // get
     double getWidth() const { return width;  }
@@ -69,13 +69,13 @@ public:
     double getAlphaAngle() const { return alphaAngle; }
     double getBetaAngle() const { return betaAngle; }
     double getQuantity() const { return quantity; }
-    const std::string& getName() { return name; }
+    const std::string& getName() const { return name; }
 
 
     /* TESTY */
-    void setHeight(double heigh); // TESTY!
-    void setWidth(double heigh); 
-    const Dimensions* getDimensions();
+    void setHeight(double value); // TESTY!
+    void setWidth(double value); 
+    const Dimensions* getDimensions() const ;
     Dimensions* setDimensions() { return &dimensions;  }
 };
 

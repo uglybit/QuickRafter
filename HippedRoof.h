@@ -7,8 +7,8 @@
 class HippedRoof final: public GableRoof
 {
 public:
-    HippedRoof(Dimensions& dim);
-    HippedRoof(Dimensions& dim, bool purl);
+    explicit HippedRoof(Dimensions& dim);
+    explicit HippedRoof(Dimensions& dim, bool purl);
 };
 
 #endif // !HIPPED_ROOF

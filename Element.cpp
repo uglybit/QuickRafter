@@ -9,7 +9,7 @@ Element::Element( Dimensions& dim) : dimensions{dim}
 }
 
 
-const Dimensions* Element::getDimensions()
+const Dimensions* Element::getDimensions() const
 {
     return &dimensions;
 }
@@ -23,13 +23,13 @@ void Element::setWidth() // ustawienie szerokoœci elementu
     width = tmpValue; 
 }
 
-void Element::setWidth(double widt) // TESTY!
+void Element::setWidth(double value) // TESTY!
 {
-    width = widt;
+    width = value;
 }
-void Element::setHeight(double heigh) // TESTY!
+void Element::setHeight(double value) // TESTY!
 {
-    height = heigh;
+    height = value;
 }
 
 
@@ -41,7 +41,7 @@ void Element::setHeight() // ustawienie wysokoœci elementu
 
 
 // wyœwietlenie wymiarów
-void Element::showDimensions() 
+void Element::showDimensions() const
 {
     cout << '\n' << name <<  "\n\t(width/height/length): "
          << width << "/" << height << "/" << length;

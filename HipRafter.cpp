@@ -106,7 +106,7 @@ void HipRafter::showParameters() // override
 
 
 // uzupe³nienie paramterów krokwi naro¿nej
-void HipRafter::showHipParameters()
+void HipRafter::showHipParameters() const
 {
     //showDimensions();
     cout << "\n\t-vertical Cut To Square: " << verticalCutToSquare << endl;

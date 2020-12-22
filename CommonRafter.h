@@ -7,28 +7,28 @@
 class CommonRafter : public Element
 {
 private:
-    double verticalCut; // długość zacięcia w pionie (zewnętrzny wymiar)
+    double verticalCut{ 0.0 }; // długość zacięcia w pionie (zewnętrzny wymiar)
     double horizontalCut; // długość zacięcia w poziomie (zewnętrzny wymiar)
 
     // zmienne pomocnicze
-    double rafterAboveWallPlat; // wysokość krokwi nad murłatą
-    double angleVerticalLine; // pionowa kreska na krokwi pod kątem
-    double angleHorizontalLine; // pozioma kreska na krokwi pod kątem
-    double horizontalEaveLength; // odległość okapu od murłaty w poziomie
+    double rafterAboveWallPlat{ 0.0 }; // wysokość krokwi nad murłatą
+    double angleVerticalLine{ 0.0 }; // pionowa kreska na krokwi pod kątem
+    double angleHorizontalLine{ 0.0 }; // pozioma kreska na krokwi pod kątem
+    double horizontalEaveLength{ 0.0 }; // odległość okapu od murłaty w poziomie
 
     /* wymiary krokwi  !!-> W OSI KROKWI - SZCZEGÓLNE ZNACZENIE DLA KROKWI NAROŻNEJ
     wymiary pod odpowiednim kątem, mierzone na górnej powierzchni  */
-    double eaveToWallPlate;  // od okapu do murłaty
-    double wallPlateToPurlin; // od murłaty do płatwi (jeśli jest płatew)
-    double purlinToTop; //  od płatwi do szczytu (jeśli jest płatew)
-    double wallPlateToTop; // od murłaty do szczytu - jeśli nie ma płatwi
-    double rafterTotalLength; // długość całkowita
+    double eaveToWallPlate{ 0.0 };  // od okapu do murłaty
+    double wallPlateToPurlin{ 0.0 }; // od murłaty do płatwi (jeśli jest płatew)
+    double purlinToTop{ 0.0 }; //  od płatwi do szczytu (jeśli jest płatew)
+    double wallPlateToTop{ 0.0 }; // od murłaty do szczytu - jeśli nie ma płatwi
+    double rafterTotalLength{ 0.0 }; // długość całkowita
 
     // wstępny współczynnik długości zacięcia - po obliczeniach nieznacznie się zmieni
     const double cuttingRatio = 0.25; 
 
 public:
-    CommonRafter(Dimensions& dim);
+    explicit CommonRafter(Dimensions& dim);
     explicit CommonRafter(Dimensions& dim, int count);
 
     ElementType type() const override { return ElementType::CommonRafter; }

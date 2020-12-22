@@ -10,7 +10,7 @@ Truss::Truss(Dimensions& dim) : dimension{ dim }
 }
 
 
-const Dimensions* Truss::getDimensions()
+const Dimensions* Truss::getDimensions() const
 {
     return &dimension;
 }
@@ -95,12 +95,6 @@ double Truss::calcArea() // override
     double w = getDimensions()->getTrussLength();
     surfaceArea = h*w*2;
     surfaceArea /= 1000000; // result in m^2
-    return surfaceArea;
-}
-
-
-double Truss::getRoofArea() const
-{
     return surfaceArea;
 }
 

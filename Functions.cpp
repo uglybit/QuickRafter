@@ -4,7 +4,7 @@
 using namespace std;
 
 
-bool dataValidation(string info)
+bool dataValidation(const string& info)
 {
     if (cin.fail())
     {

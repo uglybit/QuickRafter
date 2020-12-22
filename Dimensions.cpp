@@ -45,7 +45,7 @@ Dimensions::Dimensions() // konstruktor - wywo³ywany w Menu::show(), przed typem
 }
 
 // informacja: czy jest w projekcie p³atew
-void Dimensions::setPurlin(bool p) { purlin = p; }
+void Dimensions::setPurlin(bool pur) { purlin = pur; }
 bool Dimensions::isPurlin() const { return purlin; }
 
 // d³ugoœæ s³upka obliczana i ustawiana przez funkcjê z klasy CommonRafter 

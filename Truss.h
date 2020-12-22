@@ -19,18 +19,17 @@ protected:
     std::vector<Element*> elements;
 
 public:
-    Truss(Dimensions &dim);
+    explicit Truss(Dimensions &dim);
     virtual ~Truss();
 
     void setTrussType(const std::string& type);
     const std::string& getTrussType() const;
     double calcArea();
-    double getRoofArea() const;
     void calcParam();
     void show();
     void getInitialDimensions();
     double calcCommonRaftersDistance();
-    const Dimensions* getDimensions();
+    const Dimensions* getDimensions() const ;
     Dimensions* setDimensions() { return &dimension; }
 };
 

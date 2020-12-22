@@ -35,10 +35,11 @@ private:
     double purlinPropLength{ 0.0 }; // d³ugosc slupka - obliczane w CommonRafter
 
     double rafterAboveWallPlat{ 0.0 }; // wysokosc krokwi nad murlata w pionie
-    double alphaAngle, betaAngle; // katy dachu
+    double alphaAngle{ 0 };
+    double betaAngle{ 0 }; 
 
-    int numberOfRafters; // liczba krokwi - dopracowac
-    bool purlin;  // informacja - czy wystepuje platew w projekcie
+    int numberOfRafters{ 0 }; // liczba krokwi - dopracowac
+    bool purlin{ false };  // informacja - czy wystepuje platew w projekcie
 
 public:
     Dimensions();
@@ -51,7 +52,7 @@ public:
     void setTrussLength(double value); 
     void setWallPlateHeight(double value);
     void setHorizontalEaveLength(double value); 
-    void setPurlin(bool h); 
+    void setPurlin(bool pur); 
     void setPurlinPropDistance(double value); 
     void setCommonRafterHeight(double value); 
     void setCommonRafterWidth(double value); 
@@ -62,12 +63,13 @@ public:
     void setPurlinLevel(double value); // platew
     void setPurlinDimensions(double value); 
     void setCommRaftTotalLength(double value) { commRaftTotalLength = value; } // krokiew
-    void setHipWidth(double w); // krokiew narozna
-    void setHipHeight(double h);
+    void setHipWidth(double value); // krokiew narozna
+    void setHipHeight(double value);
     void setHipRaftTotalLength(double len) {hipRaftTotalLength = len; }
     void setRafterAboveWallPlat(double value); // obliczenia pomocnicze
 
      // get
+    bool isPurlin() const;
     double getPurlinPropLength() const;
     double getPurlinLevel() const;
     double getPurlinDimensions() const;
@@ -76,7 +78,6 @@ public:
     double getHipHeight() const;
     double getHipRaftTotalLength() const { return hipRaftTotalLength; }
     double getRafterAboveWallPlat() const;
-    bool isPurlin() const;
     double getBuildingLength() const;
     double getBuildingWidth() const;
     double getTrussHeight() const;

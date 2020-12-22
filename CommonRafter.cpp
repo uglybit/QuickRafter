@@ -5,7 +5,7 @@ using namespace std;
 CommonRafter::CommonRafter(Dimensions& dim) : Element(dim)
 {
     setName("Common rafter");
-    setParameters(); // override
+    setParameters(); // override // virtualna nie w konstruktorze!
 }
 
 

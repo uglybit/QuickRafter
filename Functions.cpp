@@ -8,11 +8,9 @@ bool dataValidation(const std::string& info)
         std::cin.clear();
         std::cin.ignore(10, '\n');
         std::cout << info;
-        return true;
-    }
-    else {
         return false;
     }
+    return true;
 }
 
 

@@ -6,7 +6,7 @@
 #include <iomanip>
 #include "Functions.h"
 
-#define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartosci
+//#define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartosci
 
 // klasa wymiary ogolne
 class Dimensions 
@@ -58,7 +58,7 @@ public:
     void setCommonRafterWidth(double value); 
     void setCommonRafterDistance(double value);
 
-    // wartoœci obliczane przez program
+    // wartosci obliczane przez program
     void setPurlinPropLength(double value); 
     void setPurlinLevel(double value); 
     void setPurlinDimensions(double value); 

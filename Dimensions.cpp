@@ -19,7 +19,7 @@ Dimensions::Dimensions()
     double setValue;
     double getValue;
 
-    setValue = validateNumber("Enter building length: ", 1000.0, 50000.0);
+    setValue = validateNumber<double>("Enter building length: ", 1000.0, 50000.0);
     setBuildingLength(setValue);
 
     setValue = validateNumber<double>("Enter building width: ", 1000.0, 20000.0);

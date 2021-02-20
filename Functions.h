@@ -12,7 +12,7 @@ bool dataValidation(const std::string& info);
 // walidacja danych - liczba
 template<typename T>
 T validateNumber(const std::string& request, const T range_low, const T range_high,
-    const std::string& info_bad_data = "Thisddddddddddddd is not proper value\n")
+    const std::string& info_bad_data = "This is not proper value\n")
 {
     T number;
     while (true)

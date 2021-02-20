@@ -4,7 +4,7 @@
 
 Dimensions::Dimensions() 
 {
-    std::cout << "\n\t! >ddddddALL VALUES IN MILIMETERS< !\n" << std::endl;
+    std::cout << "\n\t! >ALL VALUES IN MILIMETERS< !\n" << std::endl;
 
     double setValue;
     double getValue;

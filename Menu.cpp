@@ -19,7 +19,7 @@ void Menu::show()
     Dimensions dimensions; 
     
 
-    auto choice = validateNumber("Choose option 1-4: ", 1, 4);
+    auto choice = validateNumber("Choose option 1-4: ", FIRST_OPTION, LAST_OPTION);
 
     switch(choice)
     {

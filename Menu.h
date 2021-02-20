@@ -8,6 +8,8 @@
 
 class Menu
 {
+    const int FIRST_OPTION = 1;
+    const int LAST_OPTION = 4;
     Truss *truss = nullptr;
 public:
     Menu() = default;

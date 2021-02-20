@@ -13,11 +13,12 @@ void Menu::show()
     std::cout << "1. Gable roof without purlins\n";
     std::cout << "2. Gable roof with purlins\n";
     std::cout << "3. Hipped roof without purlins\n";
-    std::cout << "4. Hipped roof with purlins\n" << std::endl;
+    std::cout << "4. Hipped roof with purlins\n\n";
    
-    // w kostruktorze Dimenion() uzytkownik dostaje instrukcje i wpisuje wartosci
+    // w kostruktorze Dimenions() uzytkownik dostaje instrukcje i wpisuje wartosci
     Dimensions dimensions; 
     
+
     auto choice = validateNumber("Choose option 1-4: ", 1, 4);
 
     switch(choice)

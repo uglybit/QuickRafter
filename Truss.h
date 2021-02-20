@@ -12,6 +12,7 @@
 class Truss
 {
 private:
+
     Dimensions& dimension;
     std::string trussType;
     double surfaceArea{ 0.0 };

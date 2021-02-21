@@ -5,11 +5,11 @@
 #include <iostream>
 #include <iomanip>
 #include "Functions.h"
+#include "../QuickRafter_tests/DimensionsInterface.h"
 
-//#define TEST  // do testów - jesli TEST jest zdefiniowany: kompilacja bez wpisywania wartosci
 
 // klasa wymiary ogolne
-class Dimensions 
+class Dimensions : public DimensionsInterface
 {
 private:
     double buildingLength{ 0.0 }; // dlugosc bydunku
@@ -32,7 +32,7 @@ private:
     double purlinDimensions{ 0.0 }; // wymiar platwi: zalozenie -  przekroj kwadratowy
     double purlinHeight{ 0.0 }; // wysoksc ulozenia platwi - wyokosc gornej powierzchni
     double purlinLevel{ 0.0 };
-    double purlinPropLength{ 0.0 }; // d³ugosc slupka - obliczane w CommonRafter
+    double purlinPropLength{ 0.0 }; // dï¿½ugosc slupka - obliczane w CommonRafter
 
     double rafterAboveWallPlat{ 0.0 }; // wysokosc krokwi nad murlata w pionie
     double alphaAngle{ 0 };

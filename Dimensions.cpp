@@ -4,6 +4,16 @@
 
 Dimensions::Dimensions() 
 {
+#if defined TEST // TEST - bez r�cznego wpisywania warto�ci
+    setBuildingLength(10000);
+     setBuildingWidth(8000);
+     setTrussHeight(3500);
+     setTrussLength(11000);
+     setWallPlateHeight(700);
+    setHorizontalEaveLength(1100);
+
+
+#else 
     std::cout << "\n\t! >ALL VALUES IN MILIMETERS< !\n" << std::endl;
 
     double setValue;
@@ -29,6 +39,7 @@ Dimensions::Dimensions()
     getValue = getBuildingWidth(); // ?
     setValue = validateNumber<double>("Enter horizontal eave length: ", 0.0, 3000.0);
     setHorizontalEaveLength(setValue);
+#endif
 }
 
 void Dimensions::setPurlin(bool pur) { purlin = pur; }

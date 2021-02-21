@@ -4,6 +4,7 @@
 
 Dimensions::Dimensions() 
 {
+	std::cout << "\n\t! >ALL VALUES IN MILIMETERS< !\n" << std::endl;
 #if defined TEST // TEST - bez r�cznego wpisywania warto�ci
     setBuildingLength(10000);
      setBuildingWidth(8000);

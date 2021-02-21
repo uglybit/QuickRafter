@@ -4,8 +4,8 @@
 #include "Dimensions.h"
 #include <cmath> 
 #include <iostream>
+#include "Tests/Element/ElementInterface.h"
 
-// do rozpoznawania typu klasy dziedziczacej po Element*
 enum class ElementType {
     Element,
     CommonRafter,
@@ -16,6 +16,7 @@ enum class ElementType {
     WallPlate,
     CollarBeam
     };
+
 
 
 class Element
@@ -31,8 +32,8 @@ private:
     double height{ 0.0 }; 
     int quantity{ 0 };
         
-    double alphaAngle{ 0.0 }; // k¹t nachylenia dachu wzgeldem poziomu  
-    double betaAngle{ 0.0 }; //  k¹t nachylenia dachu wzgledem pionu
+    double alphaAngle{ 0.0 }; // kï¿½t nachylenia dachu wzgeldem poziomu  
+    double betaAngle{ 0.0 }; //  kï¿½t nachylenia dachu wzgledem pionu
     Dimensions& dimensions;
 
 public:

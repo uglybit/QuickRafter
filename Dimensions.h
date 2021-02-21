@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include "Functions.h"
-#include "../QuickRafter_tests/DimensionsInterface.h"
+#include "Tests/Dimensions/DimensionsInterface.h"
 
 
 // klasa wymiary ogolne

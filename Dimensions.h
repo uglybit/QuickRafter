@@ -7,7 +7,7 @@
 #include "Functions.h"
 #include "Tests/Dimensions/DimensionsInterface.h"
 
-//#define TEST
+#define TEST
 
 // klasa wymiary ogolne
 class Dimensions : public DimensionsInterface

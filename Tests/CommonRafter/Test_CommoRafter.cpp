@@ -8,8 +8,9 @@
 #include "../../Element.cpp"
 #include "../../CommonRafter.cpp"
 #include "../../PurlinProp.cpp"
+#include "../FixtureInterface/FixtureInterface.h"
 
-
+/*
 class FixtureTest : public ::testing::Test {
     protected:
     std::istringstream input  = std::istringstream("10000 8000 3500 11000 700 1100 100 100 8 1800 90 180 800 "); 
@@ -37,8 +38,34 @@ class FixtureTest : public ::testing::Test {
         delete purlinProp;
     }
 };
+*/
 
-TEST_F(FixtureTest, commonRafterConstructor) {
+class FixtureCommonRafter : public FixtureTest {
+    protected:
+    Element* commonRafter;
+    Dimensions* dimensions;
+    Element* purlinProp;
+
+    FixtureCommonRafter() : FixtureTest() {
+        input = std::istringstream("10000 8000 3500 11000 700 1100 100 100 8 1800 90 180 800 "); 
+    }
+
+    void SetUp() override {
+        FixtureTest::SetUp();
+        dimensions = new Dimensions;
+        purlinProp = new PurlinProp(*dimensions);
+        commonRafter = new CommonRafter(*dimensions);
+    }
+    void TearDown() override {
+        FixtureTest::TearDown();
+        delete commonRafter;
+        delete dimensions;
+        delete purlinProp;
+    }
+};
+
+
+TEST_F(FixtureCommonRafter, commonRafterConstructor) {
     std::string name;
     name = commonRafter->getName();
     EXPECT_STREQ("Common rafter", name.c_str());
@@ -58,7 +85,7 @@ TEST_F(FixtureTest, commonRafterConstructor) {
 
 }
 
-TEST_F(FixtureTest, calculateParametersTestFunction) {
+TEST_F(FixtureCommonRafter, calculateParametersTestFunction) {
     commonRafter->calculateParameters();
 
     double retValue = commonRafter->getAlphaAngle();

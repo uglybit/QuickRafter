@@ -7,7 +7,7 @@
 
 class FixtureTest : public ::testing::Test {
     protected:
-    std::istringstream input; 
+    std::istringstream input = std::istringstream("10000 8000 3500 11000 700 1100 ");
     std::ostringstream output; 
     using cout_pointer = decltype(std::cout.rdbuf()); 
     cout_pointer coutPtr; 

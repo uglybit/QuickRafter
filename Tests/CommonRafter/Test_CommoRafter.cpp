@@ -10,35 +10,6 @@
 #include "../../PurlinProp.cpp"
 #include "../FixtureInterface/FixtureInterface.h"
 
-/*
-class FixtureTest : public ::testing::Test {
-    protected:
-    std::istringstream input  = std::istringstream("10000 8000 3500 11000 700 1100 100 100 8 1800 90 180 800 "); 
-    std::ostringstream output;
-    using cout_pointer = decltype(std::cout.rdbuf()); 
-    cout_pointer coutPtr; 
-    
-    Element* commonRafter;
-    Dimensions* dimensions;
-    Element* purlinProp;
-
-    void SetUp() override{
-        std::cin.rdbuf(input.rdbuf());
-        coutPtr = std::cout.rdbuf(); 
-        std::cout.rdbuf(output.rdbuf());  
-        dimensions = new Dimensions;
-        purlinProp = new PurlinProp(*dimensions);
-        commonRafter = new CommonRafter(*dimensions);
-    }
-
-    void TearDown() override {
-        std::cout.rdbuf(coutPtr);
-        delete commonRafter;
-        delete dimensions;
-        delete purlinProp;
-    }
-};
-*/
 
 class FixtureCommonRafter : public FixtureTest {
     protected:

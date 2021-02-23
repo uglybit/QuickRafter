@@ -5,12 +5,12 @@
 #include <iostream>
 #include <iomanip>
 #include "Functions.h"
-#include "Tests/Dimensions/DimensionsInterface.h"
+//#include "Tests/Dimensions/DimensionsInterface.h"
 
-#define TEST
+//#define TEST
 
 // klasa wymiary ogolne
-class Dimensions : public DimensionsInterface
+class Dimensions //: public DimensionsInterface
 {
 private:
     double buildingLength{ 0.0 }; // dlugosc bydunku

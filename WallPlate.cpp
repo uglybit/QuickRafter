@@ -15,13 +15,13 @@ ElementType WallPlate::type() const
 
 void WallPlate::setParameters() // override
 {
-#if defined TEST // TEST - bez rêcznego wpisywania wartoœci
+//#if defined TEST // TEST - bez rï¿½cznego wpisywania wartoï¿½ci
     setWidth(140);
     setHeight(140);
-#else 
+//#else 
     setWidth();
     setHeight();
-#endif
+//#endif
 }
 
 

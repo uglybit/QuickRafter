@@ -3,11 +3,12 @@
 
 #include "Element.h"
 
-// mur³ata
+// murï¿½ata
 class WallPlate final: public Element
 {
 public:
     explicit WallPlate(Dimensions& dim);
+    ~WallPlate() {}
 
     ElementType type() const override;
     void setParameters();

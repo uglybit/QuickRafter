@@ -31,16 +31,16 @@ void Element::setName(const std::string& n)
 }
 
 
-void Element::setWidth() // ustawienie szerokoœci elementu
+void Element::setWidth() // ustawienie szerokoï¿½ci elementu
 {
     double tmpValue;
     std::cout << name;
-    tmpValue = validateNumber("\twidth:  ", 10.0, 500.0);
+    tmpValue = validateNumber<double>("\twidth:  ", 10.0, 500.0);
     width = tmpValue; 
 }
 
 
-#if defined TEST
+//#if defined TEST
 void Element::setWidth(double value)
 {
     width = value;
@@ -50,13 +50,13 @@ void Element::setHeight(double value)
 {
     height = value;
 }
-#endif
+//#endif
 
 
-void Element::setHeight() // ustawienie wysokoœci elementu
+void Element::setHeight() // ustawienie wysokoï¿½ci elementu
 {
     std::cout << name;
-    height = validateNumber("\theight:  ", 10.0, 500.0);
+    height = validateNumber<double>("\theight:  ", 10.0, 500.0);
 }
 
 
@@ -91,7 +91,7 @@ double Element::degreesToRadians(double value)
 }
 
 
-// obliczenia k¹ta dachu
+// obliczenia kï¿½ta dachu
 void Element::calculateAngles(double vertical, double horizontal)
 {
     double radians = atan(vertical/horizontal);

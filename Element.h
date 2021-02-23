@@ -4,7 +4,8 @@
 #include "Dimensions.h"
 #include <cmath> 
 #include <iostream>
-#include "Tests/Element/ElementInterface.h"
+
+//#include "Tests/Element/ElementInterface.h"
 
 enum class ElementType {
     Element,
@@ -41,8 +42,8 @@ public:
     virtual ~Element() = default;
 
     virtual ElementType type() const;
-    virtual void calculateParameters() = 0;
-    virtual void showParameters() = 0;
+    virtual void calculateParameters() {} //= 0;
+    virtual void showParameters() {} //= 0;
 
     const Dimensions* getDimensions() const;
     Dimensions* setDimensions();
@@ -68,10 +69,10 @@ public:
     const std::string& getName() const;
 
 
-#if defined TEST
+//#if defined TEST
     void setHeight(double value); 
     void setWidth(double value); 
-#endif
+//#endif
     
 };
 

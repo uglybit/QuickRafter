@@ -3,7 +3,7 @@
 
 #include "CommonRafter.h"
 
-//krokiew naro¿na
+//krokiew naroï¿½na
 class HipRafter final: public CommonRafter // krokiew zwykla
 {
 private:

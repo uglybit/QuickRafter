@@ -44,6 +44,7 @@ public:
     virtual ElementType type() const;
     virtual void calculateParameters() {} //= 0;
     virtual void showParameters() {} //= 0;
+    virtual void setParameters() {} /// UWAGA DODANE!!!
 
     const Dimensions* getDimensions() const;
     Dimensions* setDimensions();

@@ -8,9 +8,9 @@ CommonRafter::CommonRafter(Dimensions& dim) : Element(dim)
 }
 
 
-CommonRafter::CommonRafter(Dimensions& dim, int count) : Element(dim)  // tego konstruktora wywo³uje HipRafter
+CommonRafter::CommonRafter(Dimensions& dim, int count) : Element(dim)  // tego konstruktora wywoï¿½uje HipRafter
 {
-    // d³ugoœæ okpau w poziomie - po przek¹tnej dlatego pierwiastek(2)
+    // dï¿½ugoï¿½ï¿½ okpau w poziomie - po przekï¿½tnej dlatego pierwiastek(2)
     horizontalEaveLength = getDimensions()->getHorizontalEaveLength() * sqrt(2);
 }
 
@@ -22,68 +22,61 @@ ElementType CommonRafter::type() const {
 
 void CommonRafter::setParameters() 
 {
-#if defined TEST // TEST - bez rêcznego wpisywania wartoœci
-    setHeight(180);
-    setWidth(90);
-    setDimensions()->setCommonRafterHeight(getHeight());
-    setDimensions()->setCommonRafterWidth(getWidth());
-    setDimensions()->setCommonRafterDistance(800);
-    horizontalEaveLength = getDimensions()->getHorizontalEaveLength();
-
-#else  
+    std::cout << __PRETTY_FUNCTION__ << '\n';
     double value;
     setWidth();
     setDimensions()->setCommonRafterWidth(getWidth());
     setHeight();
     setDimensions()->setCommonRafterHeight(getHeight());
-    value = validateNumber("Approximate distance between common rafters: ", 100.0, 3000.0);
+    value = validateNumber<double>("Approximate distance between common rafters: ", 100.0, 3000.0);
     setDimensions()->setCommonRafterDistance(value);
+    std::cout << "Distance is:" << getDimensions()->getCommonRaftersDistance() << '\n';
     horizontalEaveLength = getDimensions()->getHorizontalEaveLength();
-#endif
+    std::cout << "end of " << __PRETTY_FUNCTION__ << '\n'; 
 }
 
 
 void CommonRafter::calculateParameters() // override
 {
-    // pobranie wartoœci w celu obliczenia wstêpnego k¹ta dachu
+    // pobranie wartoï¿½ci w celu obliczenia wstï¿½pnego kï¿½ta dachu
     double height = getDimensions()->getTrussHeight() - getDimensions()->getWallPlateHeight();
     double width = getDimensions()->getBuildingWidth()/2;
-    calculateAngles(height, width); // wstêpne wartoœci k¹tów - ulegn¹ zmianie
+    calculateAngles(height, width); // wstï¿½pne wartoï¿½ci kï¿½tï¿½w - ulegnï¿½ zmianie
 
-    // obliczenia wstêpne
-    calculateVerticalLine(getDimensions()->getCommonRafterHeight()); // d³ugoœc pionowej kreski na krokwi
-    calculateVerticalCut(); // d³ugoœæ zaciêcia
+    // obliczenia wstï¿½pne
+    calculateVerticalLine(getDimensions()->getCommonRafterHeight()); // dï¿½ugoï¿½c pionowej kreski na krokwi
+    calculateVerticalCut(); // dï¿½ugoï¿½ï¿½ zaciï¿½cia
 
-    // obliczenia w³aœciwe
-    calculateRafterAboveWallPlatt(); // wysokoœæ krokwi nad mur³at¹ - determinuje w³aœciw¹ wartoœæ k¹ta dachu
-    calculateAngles(height - rafterAboveWallPlat, width); // obliczenia k¹ta dachu 
-    calculateVerticalLine(getDimensions()->getCommonRafterHeight()); // ponowne obliczenie pionowej linii, bo watoœci siê zmieni³y
-    calculateProperVerticalCut(); // w³aœciwa d³ugoœc zaiêcia krokwi w pionie
-    calculateHorizontalLine(getDimensions()->getCommonRafterHeight()); // // d³ugoœc poziomej kreski na krokwi
-    calculateHorizontalCut(); // w³aœciwa d³ugoœc zaiêcia krokwi w poziomie
+    // obliczenia wï¿½aï¿½ciwe
+    calculateRafterAboveWallPlatt(); // wysokoï¿½ï¿½ krokwi nad murï¿½atï¿½ - determinuje wï¿½aï¿½ciwï¿½ wartoï¿½ï¿½ kï¿½ta dachu
+    calculateAngles(height - rafterAboveWallPlat, width); // obliczenia kï¿½ta dachu 
+    calculateVerticalLine(getDimensions()->getCommonRafterHeight()); // ponowne obliczenie pionowej linii, bo watoï¿½ci siï¿½ zmieniï¿½y
+    calculateProperVerticalCut(); // wï¿½aï¿½ciwa dï¿½ugoï¿½c zaiï¿½cia krokwi w pionie
+    calculateHorizontalLine(getDimensions()->getCommonRafterHeight()); // // dï¿½ugoï¿½c poziomej kreski na krokwi
+    calculateHorizontalCut(); // wï¿½aï¿½ciwa dï¿½ugoï¿½c zaiï¿½cia krokwi w poziomie
 
-    if (getDimensions()->isPurlin()) {             // obliczenia dla p³atwi i s³upka jeœli wystêpuj¹ w projekcie
+    if (getDimensions()->isPurlin()) {             // obliczenia dla pï¿½atwi i sï¿½upka jeï¿½li wystï¿½pujï¿½ w projekcie
         calculatePurlinAndPropLength();
     }
-    calculateRafterDimensions(1); // obliczenie reszty wymiarów krokwi
+    calculateRafterDimensions(1); // obliczenie reszty wymiarï¿½w krokwi
 }
 
 
-// d³ugoœæ poziomej linii narysowanej na krokwi pod odpowiednim k¹tem - pomocnicza
+// dï¿½ugoï¿½ï¿½ poziomej linii narysowanej na krokwi pod odpowiednim kï¿½tem - pomocnicza
 void CommonRafter::calculateVerticalLine(double value)
 {
     angleVerticalLine = value/sin(degreesToRadians(getBetaAngle())); 
 }
 
 
-// wstêpna d³ugoœc zaciêcia
+// wstï¿½pna dï¿½ugoï¿½c zaciï¿½cia
 void CommonRafter::calculateVerticalCut() 
 {                                        
     verticalCut = angleVerticalLine * cuttingRatio;
 }
 
 
-// wysokoœæ krokwi nad mur³at¹
+// wysokoï¿½ï¿½ krokwi nad murï¿½atï¿½
 void CommonRafter::calculateRafterAboveWallPlatt() 
 {
     rafterAboveWallPlat = angleVerticalLine - verticalCut;
@@ -91,33 +84,33 @@ void CommonRafter::calculateRafterAboveWallPlatt()
 }
 
 
-// pomocnicza pozioma linia na krokwi pod k¹tem
+// pomocnicza pozioma linia na krokwi pod kï¿½tem
 void CommonRafter::calculateHorizontalLine(double value)
 {
     angleHorizontalLine = value/sin(degreesToRadians(getAlphaAngle()));
 }
 
 
-// w³aœciwa d³ugoœæ zaciêcia w pionie
+// wï¿½aï¿½ciwa dï¿½ugoï¿½ï¿½ zaciï¿½cia w pionie
 void CommonRafter::calculateProperVerticalCut()
 {
     verticalCut = angleVerticalLine - rafterAboveWallPlat;
 }
 
 
-// obliczamy wysokosc s³upka i wysokosc p³atwi - góra
+// obliczamy wysokosc sï¿½upka i wysokosc pï¿½atwi - gï¿½ra
 void CommonRafter::calculatePurlinAndPropLength() // if there is a purlin
 {
-    double pPropDist = getDimensions()->getPurlinPropDistance(); // odleg³oœæ s³upka od mur³aty 
-    double tgAngle = tan(degreesToRadians(getAlphaAngle())); // stosunek d³ugoœci
-    double wallPlateHeight = getDimensions()->getWallPlateHeight(); // wysokoœæ mur³aty
-    double purlinDim = getDimensions()->getPurlinDimensions(); // wymiary p³atwi
-    double propLength = tgAngle* pPropDist + wallPlateHeight - purlinDim; // d³ugoœæ s³upka
+    double pPropDist = getDimensions()->getPurlinPropDistance(); // odlegï¿½oï¿½ï¿½ sï¿½upka od murï¿½aty 
+    double tgAngle = tan(degreesToRadians(getAlphaAngle())); // stosunek dï¿½ugoï¿½ci
+    double wallPlateHeight = getDimensions()->getWallPlateHeight(); // wysokoï¿½ï¿½ murï¿½aty
+    double purlinDim = getDimensions()->getPurlinDimensions(); // wymiary pï¿½atwi
+    double propLength = tgAngle* pPropDist + wallPlateHeight - purlinDim; // dï¿½ugoï¿½ï¿½ sï¿½upka
 
-    setDimensions()->setPurlinPropLength(propLength); // zapisanie d³ugoœci s³upka
+    setDimensions()->setPurlinPropLength(propLength); // zapisanie dï¿½ugoï¿½ci sï¿½upka
 
     double purDim = getDimensions()->getPurlinDimensions();
-    setDimensions()->setPurlinLevel(purDim + propLength); // zapisanie wysokkoœci na jakiej jest p³atew
+    setDimensions()->setPurlinLevel(purDim + propLength); // zapisanie wysokkoï¿½ci na jakiej jest pï¿½atew
 }
 
 
@@ -127,36 +120,36 @@ void CommonRafter::calculateHorizontalCut()
 }
 
 
-// CommonRafter i HipRafter korzystaj¹ z tej samej funkcji dletego jest paramter: pierwiastek(2 lub 1)
-void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaæ dla dachu bez p³atwi */
+// CommonRafter i HipRafter korzystajï¿½ z tej samej funkcji dletego jest paramter: pierwiastek(2 lub 1)
+void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaï¿½ dla dachu bez pï¿½atwi */
 {
     // DIMENSION EAVE - WALL PLATE
     double eave = getDimensions()->getHorizontalEaveLength(); // dlugosc okapu w poziomie
     double propDistance = getDimensions()->getPurlinPropDistance(); // odleglosc slupka
     double buildWidth = getDimensions()->getBuildingWidth() / 2; // polowa szerokosci budynku
 
-    // w zale¿noœci od rodzaju krokwi wymiar bêdzie inny
+    // w zaleï¿½noï¿½ci od rodzaju krokwi wymiar bï¿½dzie inny
     eave *= sqrt(sqroot); 
     propDistance *= sqrt(sqroot);
     buildWidth *= sqrt(sqroot);
 
-    // D£UGOŒC KROKWI - SEKCJE:
+    // Dï¿½UGOï¿½C KROKWI - SEKCJE:
 
-    // sekcja a) okap - mur³ata
+    // sekcja a) okap - murï¿½ata
     double cosValue = cos(degreesToRadians(getAlphaAngle()));
     eaveToWallPlate = eave/cosValue; 
 
-    // sekcja b) mur³ata - p³atew
+    // sekcja b) murï¿½ata - pï¿½atew
     wallPlateToPurlin = propDistance/cosValue;
 
-    // sekcja c) p³atew - szczyt
+    // sekcja c) pï¿½atew - szczyt
     double dist = buildWidth - propDistance;
     purlinToTop = dist/cosValue;
 
-    // sekcja d) mur³ata - szczyt
+    // sekcja d) murï¿½ata - szczyt
     wallPlateToTop = buildWidth/cosValue;
     
-    // d³ugoœc ca³kowita
+    // dï¿½ugoï¿½c caï¿½kowita
     rafterTotalLength = (buildWidth + eave)/cosValue;
     if (sqroot == 1) {
         setDimensions()->setCommRaftTotalLength(rafterTotalLength);
@@ -164,7 +157,7 @@ void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaæ dla dac
         setDimensions()->setHipRaftTotalLength(rafterTotalLength);
     }
 
-#if defined TEST // w celach testowych - wypisanie obliczanych wartoœci na bie¿¹co
+#if defined TEST // w celach testowych - wypisanie obliczanych wartoï¿½ci na bieï¿½ï¿½co
     std::cout << "Section length: eave - wall plate " << eaveToWallPlate << "\n";
     std::cout << "Section length:  wall plate - purlin: " << wallPlateToPurlin << "\n";
     std::cout << "Section length: purlin - top: " << purlinToTop << "\n";
@@ -175,7 +168,7 @@ void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowaæ dla dac
 }
 
 
-// wyœwietlenie parametrów krokwi
+// wyï¿½wietlenie parametrï¿½w krokwi
 void CommonRafter::showParameters() // override
 {
 //    showDimensions();

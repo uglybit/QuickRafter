@@ -15,13 +15,8 @@ ElementType WallPlate::type() const
 
 void WallPlate::setParameters() // override
 {
-//#if defined TEST // TEST - bez r�cznego wpisywania warto�ci
-    setWidth(140);
-    setHeight(140);
-//#else 
     setWidth();
     setHeight();
-//#endif
 }
 
 

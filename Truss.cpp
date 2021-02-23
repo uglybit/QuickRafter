@@ -31,7 +31,7 @@ Dimensions* Truss::setDimensions()
 }
 
 
-// wywo³uje funkcjê obliczaj¹c¹ dla ka¿dego elementu
+// wywoluje funkcje obliczajaca dla kazdego elementu
 void Truss::calcParam()
 {
     for (auto a : elements) {
@@ -78,7 +78,7 @@ void Truss::getInitialDimensions() const
 }
 
 
-// obliczenie odleg³oœci miêdzy krokwiami
+// obliczenie odlegï¿½oï¿½ci miï¿½dzy krokwiami
 double Truss::calcCommonRaftersDistance() 
 {
     double trussLength = getDimensions()->getTrussLength();

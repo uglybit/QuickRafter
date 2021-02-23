@@ -16,12 +16,6 @@ ElementType PurlinProp::type() const
 
 void PurlinProp::setParameters() 
 {
-#if defined TEST // TEST - bez rêcznego wpisywania wartoœci
-    setWidth(100);
-    setHeight(100);
-    setQuantity(8);
-    setDimensions()->setPurlinPropDistance(1800);
-#else  
     int value;
     setWidth();
     setHeight();
@@ -30,7 +24,6 @@ void PurlinProp::setParameters()
     double getter = getDimensions()->getBuildingWidth();
     value = validateNumber<double>("Purlin prop distance: ", 0.0, getter / 3);
     setDimensions()->setPurlinPropDistance(value);
-#endif
 }
 
 

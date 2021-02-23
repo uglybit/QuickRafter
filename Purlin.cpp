@@ -17,15 +17,9 @@ ElementType Purlin::type() const
 
 void Purlin::setParameters()
 {
-#if defined TEST // TEST - bez rêcznego wpisywania wartoœci
-    setHeight(120);
-    setWidth(120);
-    setDimensions()->setPurlinDimensions(120);
-#else  
     setWidth();
     setHeight();
     setDimensions()->setPurlinDimensions(getHeight());
-#endif
 }
 
 

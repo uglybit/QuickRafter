@@ -3,7 +3,7 @@
 
 #include "Element.h"
 
-// s³upek
+// slupek
 class PurlinProp final: public Element // public : Purlin???
 {
 public:
@@ -13,7 +13,7 @@ public:
     void setParameters(); 
     void showParameters() override final;
 
-    // parametry s³upka musz¹ zostaæ obliczone w CommonRafter
+    // parametry sï¿½upka muszï¿½ zostaï¿½ obliczone w CommonRafter
     void calculateParameters() override final {}
 };
 

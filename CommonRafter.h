@@ -2,9 +2,10 @@
 #define COMMONRAFTER_H
 
 #include "Purlin.h"
+#include "Tests/CommonRafter/CommonRafterInterface.h"
 
 // krokiew zwykła
-class CommonRafter : public Element
+class CommonRafter : public Element, public CommonRafterInterface
 {
 private:
     // dlugosc zaciecia (zewnetrzny wymiar)

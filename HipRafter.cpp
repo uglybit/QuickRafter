@@ -16,19 +16,10 @@ ElementType HipRafter::type() const
 
 void HipRafter::setParameters()
 {
-#if defined TEST  // TEST - bez rêcznego wpisywania wartoœci
-    setWidth(140);
-    setHeight(220);
-    setDimensions()->setHipWidth(140);
-    setDimensions()->setHipHeight(220);
-
-#else 
     setWidth();
     setDimensions()->setHipWidth(getWidth());
     setHeight();
     setDimensions()->setHipHeight(getHeight());
-
-#endif
 }
 
 
@@ -53,7 +44,7 @@ void HipRafter::calculateParameters()
 }
 
 
-// obliczenia wartoœci drugiego zaciêcia krokwi naro¿enj: w osi krokwi
+// obliczenia wartoï¿½ci drugiego zaciï¿½cia krokwi naroï¿½enj: w osi krokwi
 void HipRafter::cutToSquare()
 {
     double hipWidth = getDimensions()->getHipWidth();
@@ -66,7 +57,7 @@ void HipRafter::cutToSquare()
 }
 
 
-// dodatek na powierzchnie zewnêtrzne
+// dodatek na powierzchnie zewnï¿½trzne
 void HipRafter::addToEdges()
 {
     double cosValue = cos(degreesToRadians(getAlphaAngle()));

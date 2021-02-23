@@ -3,7 +3,7 @@
 
 #include "Element.h"
 
-// p³atew 
+// platew 
 class Purlin final: public Element 
 {
 public:

@@ -37,10 +37,9 @@ void Element::setWidth() // ustawienie szeroko�ci elementu
     std::cout << name;
     tmpValue = validateNumber<double>("\twidth:  ", 10.0, 500.0);
     width = tmpValue; 
+    std::cout << "halllo " << width << '\n';
 }
 
-
-//#if defined TEST
 void Element::setWidth(double value)
 {
     width = value;
@@ -50,13 +49,13 @@ void Element::setHeight(double value)
 {
     height = value;
 }
-//#endif
 
 
 void Element::setHeight() // ustawienie wysoko�ci elementu
 {
     std::cout << name;
     height = validateNumber<double>("\theight:  ", 10.0, 500.0);
+    std::cout << height << '\n';
 }
 
 

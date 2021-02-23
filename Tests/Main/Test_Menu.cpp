@@ -19,7 +19,7 @@
 class FixtureTest : public ::testing::Test {
     protected:
                                                  //building                   option wallplate   Craft dist     purlin   p prop         hip
-    std::istringstream input = std::istringstream("10000 8000 3500 11000 700 1100 4 140 140     90 180 800     120 120  100 100 8 1800 140 220");
+    std::istringstream input = std::istringstream("10000 8000 3500 11000 700 1100 4 140 140     90 180 800     120 120  100 100 8 1800 140 220 ");
     std::ostringstream output;
     using cout_pointer = decltype(std::cout.rdbuf()); 
     cout_pointer coutPtr; 

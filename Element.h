@@ -4,7 +4,6 @@
 #include "Dimensions.h"
 #include <cmath> 
 #include <iostream>
-
 //#include "Tests/Element/ElementInterface.h"
 
 enum class ElementType {
@@ -20,7 +19,7 @@ enum class ElementType {
 
 
 
-class Element
+class Element 
 {
 private:
     // przelicznik do konwersji radiany <--> stopnie
@@ -44,7 +43,25 @@ public:
     virtual ElementType type() const;
     virtual void calculateParameters() {} //= 0;
     virtual void showParameters() {} //= 0;
+
+
+    // dodane bo wskaznik plimorficzny a tu nie bylo zadeklorowanych tych
+    // funkcji virtual!!!!
+    // docelowo zmienic na pure virtual
     virtual void setParameters() {} /// UWAGA DODANE!!!
+    virtual double getHorizontalEaveLength() {return 10.0;} // = 0;
+    virtual double getAngleVerticalLine() const {return 0.0;} // = 0;
+    virtual double getAngleHorizontalLine() const { return 0.0;} // =0;
+    virtual double getRafterAboveWallPlate() const { return 0.0;} // =0;
+    virtual double getVerticalCut() const { return 0.0;} // =0;
+    virtual double getHorizontalCut() const { return 0.0;} // =0;
+    virtual double getEaveToWallPlate() const { return 0.0;} // =0;
+    virtual double getWallPlateToPurlin() const { return 0.0;} // =0;
+    virtual double getPurlinToTop() const { return 0.0;} // =0;
+    virtual double getwallPlateToTop() const { return 0.0;} // =0;
+    virtual double getRafterTotalLength() const { return 0.0;} // =0;
+    virtual void calculateRafterDimensions(int sqroot) {}
+
 
     const Dimensions* getDimensions() const;
     Dimensions* setDimensions();
@@ -69,11 +86,8 @@ public:
     double getQuantity() const;
     const std::string& getName() const;
 
-
-//#if defined TEST
     void setHeight(double value); 
     void setWidth(double value); 
-//#endif
     
 };
 

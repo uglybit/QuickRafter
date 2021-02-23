@@ -39,7 +39,6 @@ class FixtureTest : public ::testing::Test {
 TEST_F(FixtureTest, hipRafterConstructor) {
     std::string name;
     name = hipRafter->getName();
-    //hipRafter->setParameters();
     EXPECT_STREQ("Hip rafter", name.c_str());
 
     int retValue = hipRafter->getHeight();

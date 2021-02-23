@@ -1,9 +1,9 @@
 #include "Element.h"
 
 
-Element::Element(Dimensions& dim) : dimensions{dim}
+Element::Element(Dimensions& dim) : dimensions(dim)
 {
-
+    std::cout << "Constr. Elemen: " << &dimensions << '\n';
 }
 
 
@@ -37,7 +37,6 @@ void Element::setWidth() // ustawienie szeroko�ci elementu
     std::cout << name;
     tmpValue = validateNumber<double>("\twidth:  ", 10.0, 500.0);
     width = tmpValue; 
-    std::cout << "halllo " << width << '\n';
 }
 
 void Element::setWidth(double value)

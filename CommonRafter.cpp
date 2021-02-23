@@ -10,7 +10,7 @@ CommonRafter::CommonRafter(Dimensions& dim) : Element(dim)
 
 CommonRafter::CommonRafter(Dimensions& dim, int count) : Element(dim)  // tego konstruktora wywo�uje HipRafter
 {
-    // d�ugo�� okpau w poziomie - po przek�tnej dlatego pierwiastek(2)
+    // dlugosc okpau w poziomie - po przekatnej dlatego pierwiastek(2)
     horizontalEaveLength = getDimensions()->getHorizontalEaveLength() * sqrt(2);
 }
 
@@ -22,7 +22,6 @@ ElementType CommonRafter::type() const {
 
 void CommonRafter::setParameters() 
 {
-    std::cout << __PRETTY_FUNCTION__ << '\n';
     double value;
     setWidth();
     setDimensions()->setCommonRafterWidth(getWidth());
@@ -30,9 +29,7 @@ void CommonRafter::setParameters()
     setDimensions()->setCommonRafterHeight(getHeight());
     value = validateNumber<double>("Approximate distance between common rafters: ", 100.0, 3000.0);
     setDimensions()->setCommonRafterDistance(value);
-    std::cout << "Distance is:" << getDimensions()->getCommonRaftersDistance() << '\n';
     horizontalEaveLength = getDimensions()->getHorizontalEaveLength();
-    std::cout << "end of " << __PRETTY_FUNCTION__ << '\n'; 
 }
 
 
@@ -120,55 +117,46 @@ void CommonRafter::calculateHorizontalCut()
 }
 
 
-// CommonRafter i HipRafter korzystaj� z tej samej funkcji dletego jest paramter: pierwiastek(2 lub 1)
-void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowa� dla dachu bez p�atwi */
+// CommonRafter i HipRafter korzystaja z tej samej funkcji dletego jest paramter: pierwiastek(2 lub 1)
+void CommonRafter::calculateRafterDimensions(int sqroot) /* zmodyfikowac dla dachu bez p�atwi */
 {
     // DIMENSION EAVE - WALL PLATE
     double eave = getDimensions()->getHorizontalEaveLength(); // dlugosc okapu w poziomie
     double propDistance = getDimensions()->getPurlinPropDistance(); // odleglosc slupka
     double buildWidth = getDimensions()->getBuildingWidth() / 2; // polowa szerokosci budynku
 
-    // w zale�no�ci od rodzaju krokwi wymiar b�dzie inny
+    // w zaleznoci od rodzaju krokwi wymiar b�dzie inny
     eave *= sqrt(sqroot); 
     propDistance *= sqrt(sqroot);
     buildWidth *= sqrt(sqroot);
 
-    // D�UGO�C KROKWI - SEKCJE:
+    // DLUGOSC KROKWI - SEKCJE:
 
-    // sekcja a) okap - mur�ata
+    // sekcja a) okap - murlata
     double cosValue = cos(degreesToRadians(getAlphaAngle()));
     eaveToWallPlate = eave/cosValue; 
 
-    // sekcja b) mur�ata - p�atew
+    // sekcja b) murlata - platew
     wallPlateToPurlin = propDistance/cosValue;
 
-    // sekcja c) p�atew - szczyt
+    // sekcja c) platew - szczyt
     double dist = buildWidth - propDistance;
     purlinToTop = dist/cosValue;
 
-    // sekcja d) mur�ata - szczyt
+    // sekcja d) murlata - szczyt
     wallPlateToTop = buildWidth/cosValue;
     
-    // d�ugo�c ca�kowita
+    // dlugosc calkowita
     rafterTotalLength = (buildWidth + eave)/cosValue;
     if (sqroot == 1) {
         setDimensions()->setCommRaftTotalLength(rafterTotalLength);
     } else {
         setDimensions()->setHipRaftTotalLength(rafterTotalLength);
     }
-
-#if defined TEST // w celach testowych - wypisanie obliczanych warto�ci na bie��co
-    std::cout << "Section length: eave - wall plate " << eaveToWallPlate << "\n";
-    std::cout << "Section length:  wall plate - purlin: " << wallPlateToPurlin << "\n";
-    std::cout << "Section length: purlin - top: " << purlinToTop << "\n";
-    std::cout << "Section length: wall plate - top:  " << wallPlateToTop << "\n";
-    std::cout << "Rafter total length: " << rafterTotalLength << "\n";
-    std::cout << "Horizontal eave length : " << horizontalEaveLength << std::endl;
-#endif
 }
 
 
-// wy�wietlenie parametr�w krokwi
+// wyswietlenie parametrow krokwi
 void CommonRafter::showParameters() // override
 {
 //    showDimensions();

@@ -44,7 +44,7 @@ public:
     void calculateHorizontalLine(double value);
     void calculateHorizontalCut();
     void calculatePurlinAndPropLength();
-    void calculateRafterDimensions(int sqroot);
+    virtual void calculateRafterDimensions(int sqroot);
     void showParameters() override;
 
     //set

@@ -45,10 +45,7 @@ public:
     virtual void showParameters() {} //= 0;
 
 
-    // dodane bo wskaznik plimorficzny a tu nie bylo zadeklorowanych tych
-    // funkcji virtual!!!!
-    // docelowo zmienic na pure virtual
-    virtual void setParameters() {} /// UWAGA DODANE!!!
+    // dodane w celach testowych - usunac w przyszlosci
     virtual double getHorizontalEaveLength() {return 10.0;} // = 0;
     virtual double getAngleVerticalLine() const {return 0.0;} // = 0;
     virtual double getAngleHorizontalLine() const { return 0.0;} // =0;
@@ -60,8 +57,7 @@ public:
     virtual double getPurlinToTop() const { return 0.0;} // =0;
     virtual double getwallPlateToTop() const { return 0.0;} // =0;
     virtual double getRafterTotalLength() const { return 0.0;} // =0;
-    virtual void calculateRafterDimensions(int sqroot) {}
-
+    //
 
     const Dimensions* getDimensions() const;
     Dimensions* setDimensions();

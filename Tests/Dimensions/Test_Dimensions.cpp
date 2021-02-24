@@ -6,11 +6,11 @@
 #include "../FixtureInterface/FixtureInterface.h"
 
 
-class FixtureElement : public FixtureTest {
+class FixtureDimenions : public FixtureTest {
     protected:
     Dimensions* dimensions;
 
-    FixtureElement() : FixtureTest() {
+    FixtureDimenions() : FixtureTest() {
         input = std::istringstream("10000 8000 3500 11000 700 1100");
     }
 
@@ -25,7 +25,7 @@ class FixtureElement : public FixtureTest {
 };
 
 
-TEST_F(FixtureElement, ConstructorTest) {
+TEST_F(FixtureDimenions, ConstructorTest) {
     EXPECT_EQ(dimensions->getBuildingLength(), 10000);
     EXPECT_EQ(dimensions->getBuildingLength(), 10000);
     EXPECT_EQ(dimensions->getBuildingWidth(), 8000);
@@ -33,7 +33,6 @@ TEST_F(FixtureElement, ConstructorTest) {
     EXPECT_EQ(dimensions->getTrussLength(), 11000);
     EXPECT_EQ(dimensions->getWallPlateHeight(), 700);
     EXPECT_EQ(dimensions->getHorizontalEaveLength(), 1100);
-    std::cout <<  "LALALALLALA\n";
 }
 
 

@@ -119,6 +119,7 @@ double Element::getAlphaAngle() const
 double Element::getBetaAngle() const 
 {
     return betaAngle; 
+    std::cout << "Beta from Element\n";
 }
 
 

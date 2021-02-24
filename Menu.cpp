@@ -29,7 +29,7 @@ void Menu::show()
         case 4: truss = new HippedRoof(dimensions, true); break;
     }
 
-    std::cout << truss->getTrussType() << "\n"; 
+    std::cout << truss->getTrussType() << '\n'; 
     truss->calcParam(); 
     truss->show(); 
 }

@@ -94,6 +94,4 @@ TEST_F(FixtureCommonRafter, calculateParametersTestFunction) {
 
     retValue = commonRafter->getRafterTotalLength();
     EXPECT_NEAR(6107, retValue, 1);
-
-
 }

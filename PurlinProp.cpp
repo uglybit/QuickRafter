@@ -24,7 +24,6 @@ void PurlinProp::setParameters()
     double getter = getDimensions()->getBuildingWidth();
     value = validateNumber<double>("Purlin prop distance: ", 0.0, getter / 3);
     setDimensions()->setPurlinPropDistance(value);
-    std::cout << "Purlin prop distance w PP: " << getDimensions()->getPurlinPropDistance() << '\n';
 }
 
 
